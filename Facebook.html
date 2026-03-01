@@ -4,7 +4,7 @@
         <title>
             Facebook
         </title>
-        <style>
+        <style>        
             .login-button{
                 background-color: black;
                 color: white;
@@ -14,22 +14,25 @@
                 padding-bottom: 6px;
                 padding-left: 115px;
                 padding-right: 115px;
-                font-family: arial;
+                font-family: Arial;
             }
             .email-card{
                 border-radius: 5px;
                 border-color: grey;
-                width: 255px;
+                width: 225px;
                 padding-top: 5px;
                 padding-bottom: 5px;
+                padding-left: 25px;
             }
             .password-card{
                 border-radius: 5px;
                 margin-top: 7px;
                 border-color: grey;
-                width: 255px;
+                width: 225px;
                 padding-bottom: 5px;
                 padding-top: 5px;
+                padding-left: 25px;
+                align-items: center;
             }
             .span-text{
                 color: black;
@@ -81,27 +84,44 @@
             }
             .terms-text{
                 color: rgb(120, 75, 202);
+                font-family: Arial;
+                margin: 0;
+                font-size: 15px;
+                margin-bottom: 30px;
+                margin-left: 25px;
+            }
+            .form-footer{
+                font-family: Arial;
+                font-size: 15px;
+                color: #5f6368;
+                margin-top: 30px;
             }
             .Password-text{
                 color: rgb(120, 75, 202);
+                font-family:  Arial;
             }
             .and-text{
                 color: black;
+                font-family:  Arial;
             }
             .account-text{
-                color: ;
+                color: black;
+                font-family: Arial;
             }
             .sign-in{
-                font-family: arial;
+                font-family: Roboto, arial;
                 font-weight: bold;
                 font-size: large;
             }
             .login-container{
                 margin-left: 100px;
-                border: 3px solid black;
-                padding-left: 20px;
-                padding-right: 20px;
+                border: 1px solid #e0e0e0;
                 border-radius: 20px;
+                max-width: 350px;
+                margin: 50px auto;
+                width: 90%;
+                background-color: #fff;
+                padding-left: 65px;
             }
             .Google-logo{
                 width: 20px;
@@ -141,23 +161,44 @@
             }
             .email-image{
                 height: 16px;
-                width: 16px;
-                margin-right: 10px;
+                width: 18px;
+                margin-left: 4px;
+                position: absolute;
             }
             .password-image{
                 width: 16px;
                 height: 16px;
-                margin-right: 10px;
+                position: absolute;
+                margin-left: 4px;
+                margin-top: 7px;
             }
-            .email-input{
-                display: flex;
-                align-items: center;
-                border: 1px solid #e0e0e0;
-            }
+            .email-input,
             .password-input{
                 display: flex;
                 align-items: center;
                 border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                background-color: #fff;
+                width: 100%;
+                max-width: 350px;
+                border: none;
+                background: transparent;
+            }
+            .Divider{
+              font-family: Arial;
+              color: #5f6368;
+              margin-left: 100px;  
+            }
+            /*
+            .Divider::before,
+            .Divider::after{
+                content: "";
+                flex: 1;
+                height: 1px;
+                */
+            Body{
+                background-color: #e8e8e8;
+                align-items: center;
             }
         </style>
     </head>
@@ -185,9 +226,11 @@
      <button class="login-button">
         Login
      </button>
-     <p>
+     <div class="Divider">
+     <p class="Or-text">
         or
      </p>
+     </div>
      <button class="Google-option">
         <img src="YouTube Google Logo Google S Google Account PNG.jpg"
          class="Google-logo">
@@ -206,7 +249,7 @@
         <img src="Apple Logo PNG.jpg" class="apple-logo">
         <span class="apple-description">Continue with Apple</span>
      </button>
-     <p>
+     <p class="form-footer">
         By signing with an account, you agree to our 
      </p>
      <p class="terms-text">
