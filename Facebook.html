@@ -6,33 +6,21 @@
         </title>
         <style>        
             .login-button{
+                width: 260px;
+                padding: 10px;
                 background-color: black;
                 color: white;
                 border: none;
-                border-radius: 20px;
-                padding-top: 6px;
-                padding-bottom: 6px;
-                padding-left: 115px;
-                padding-right: 115px;
-                font-family: Arial;
+                border-radius: 55px;
+                cursor: pointer;
             }
-            .email-card{
+            .email-card,
+            .passwword-card{
+                width: 220px;
+                padding: 10px;
                 border-radius: 5px;
-                border-color: grey;
-                width: 225px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-                padding-left: 25px;
-            }
-            .password-card{
-                border-radius: 5px;
-                margin-top: 7px;
-                border-color: grey;
-                width: 225px;
-                padding-bottom: 5px;
-                padding-top: 5px;
-                padding-left: 25px;
-                align-items: center;
+                border: 1px solid #ccc;
+                padding-left: 30px;
             }
             .span-text{
                 color: black;
@@ -47,6 +35,8 @@
                 font-size: 14px;
                 align-items: center;
                 width: 260px;
+                border: 1px solid #ccc;
+                cursor: pointer;
             }
             .Facebook-option{
                 display: flex;
@@ -59,6 +49,8 @@
                 padding-top: 5px;
                 width: 260px;
                 align-items: center;
+                border: 1px solid #ccc;
+                cursor: pointer;
             }
             .X-option{
                 display: flex;
@@ -70,6 +62,8 @@
                 padding-bottom: 5px;
                 padding-top: 5px;
                 align-items: center;
+                border: 1px solid #ccc;
+                cursor: pointer;
             }
             .Apple-option{
                 display: flex;
@@ -81,6 +75,8 @@
                 padding-bottom: 5px;
                 padding-top: 5px;
                 align-items: center;
+                border: 1px solid #ccc;
+                cursor: pointer;
             }
             .terms-text{
                 color: rgb(120, 75, 202);
@@ -89,12 +85,6 @@
                 font-size: 15px;
                 margin-bottom: 30px;
                 margin-left: 25px;
-            }
-            .form-footer{
-                font-family: Arial;
-                font-size: 15px;
-                color: #5f6368;
-                margin-top: 30px;
             }
             .Password-text{
                 color: rgb(120, 75, 202);
@@ -109,15 +99,15 @@
                 font-family: Arial;
             }
             .sign-in{
-                font-family: Roboto, arial;
+                font-size: 24px;
                 font-weight: bold;
-                font-size: large;
+                margin-bottom: 10px;
             }
             .login-container{
                 margin-left: 100px;
                 border: 1px solid #e0e0e0;
                 border-radius: 20px;
-                max-width: 350px;
+                max-width: 300px;
                 margin: 50px auto;
                 width: 90%;
                 background-color: #fff;
@@ -170,35 +160,63 @@
                 height: 16px;
                 position: absolute;
                 margin-left: 4px;
-                margin-top: 7px;
+                margin-top: 1px;
             }
-            .email-input,
-            .password-input{
+            .divider{
                 display: flex;
                 align-items: center;
-                border: 1px solid #e0e0e0;
-                border-radius: 8px;
-                background-color: #fff;
-                width: 100%;
-                max-width: 350px;
-                border: none;
-                background: transparent;
+                gap: 10px;
+                margin: 16px 0;
+                margin-left: -5px;
+                max-width: 250px;
             }
-            .Divider{
-              font-family: Arial;
-              color: #5f6368;
-              margin-left: 100px;  
-            }
-            /*
-            .Divider::before,
-            .Divider::after{
-                content: "";
+            .divider::before,
+            .divider::after{
+                content: '';
                 flex: 1;
                 height: 1px;
-                */
+                background-color: #ccc;
+            }
             Body{
                 background-color: #e8e8e8;
                 align-items: center;
+            }
+             .email-input{
+                display: flex;
+                align-items: center;
+            }
+            .password-input{
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+            }
+            .eye-image{
+                width: 20px;
+                height: 22px;
+                position: absolute;
+                margin-left: 235px;
+                margin-top: 1px;
+            }
+            .user-text{
+                color: rgb(120, 75, 202);
+                font-family: Arial;
+            }
+            .terms-text{
+                 color: black;
+                font-family: Arial;
+                margin: 0;
+                font-size: 12px;
+                margin-bottom: 30px;
+                margin-left: 10px;
+                margin-top: 15px;
+            }
+            .span-text{
+                color: rgb(120, 75, 202);
+                font-family: Arial;
+                margin: 0;
+                font-size: 13px;
+                margin-bottom: 30px;
+                margin-left: 20px;
             }
         </style>
     </head>
@@ -207,29 +225,29 @@
      <p class="sign-in">
         Sign in
      </p>
-     <p class="account-text">
-        <span>New user?</span>Create an account
-     </p>
+      <p>
+            New user? <span class="user-text">Create an account</span>
+        </p>
      <div class="email-input">
         <img src="Email Icon Vector, Address, Background, Black PNG and Vector with Transparent Background for Free Download.jpg"
             class="email-image">
      <input class="email-card" type="text" placeholder="Email Address">
      </div>
-     <div class="password-input">
-        <img src="Lock - Free security icons.jpg"
-         class="password-image">
-     <input class="password-card" type="text" placeholder="Password">
-     </div>
+      <div class="password-input">
+            <img src="Lock - Free security icons.jpg" 
+            class="password-image">
+        <input class="passwword-card" type="text" placeholder="Password">
+        <img src="Eye, vision symbol icon in line style design isolated on white background_ Editable stroke_.jpg" 
+        class="eye-image">
+        </div>
      <p class="Password-text">
         Forgot password?
      </p>
      <button class="login-button">
         Login
      </button>
-     <div class="Divider">
-     <p class="Or-text">
-        or
-     </p>
+     <div class="divider">
+        <span class="divider-text">or</span>
      </div>
      <button class="Google-option">
         <img src="YouTube Google Logo Google S Google Account PNG.jpg"
@@ -249,12 +267,9 @@
         <img src="Apple Logo PNG.jpg" class="apple-logo">
         <span class="apple-description">Continue with Apple</span>
      </button>
-     <p class="form-footer">
-        By signing with an account, you agree to our 
-     </p>
      <p class="terms-text">
-        Term of Service <span class="and-text">and</span> Privacy Policy
-     </p>
+            By signing with an account, you agree to our <span class="span-text">Terms of Service <span class="and-text">and</span> Privacy Policy</span>
+        </p>
         </div>
     </body>
 </html>
