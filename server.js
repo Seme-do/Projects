@@ -1,8 +1,8 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
-
+app.use(cors());
 app.use(express.json());
-
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
 
@@ -12,7 +12,6 @@ app.post("/login", (req, res) => {
     res.status(401).json({ message: "Invalid credentials" });
   }
 });
-
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
