@@ -1,0 +1,214 @@
+body{
+    margin: 0;
+    background-color: white;
+    display: flex;
+}
+.Gemio-title {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: black;
+    gap: 10px;
+}
+.logo {
+        width: 30px;
+        height: 30px;
+    }
+.General-button {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        width: 20px;
+        height: 20px;
+    }
+.left-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    background-color:  #FDF8E6;
+    padding: 20px;
+    min-height: 100vh;
+}
+.icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    margin-right: -35px;
+}
+.Reservation-text {
+        margin-left: 10px;
+        padding-left: 30px;
+        height: 35px;
+        padding-right: 15px;
+        border-radius: 7px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background-color: #fff;
+    }
+.Overview-text{
+        margin-left: 10px;
+        padding-left: 30px;
+        height: 35px;
+        padding-right: 37px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        cursor: pointer;
+        background-color: #fff;
+    }
+.Restaurant-text{
+        margin-left: 10px;
+        padding-left: 30px;
+        height: 35px;
+        padding-right: 22px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        cursor: pointer;
+        background-color: #fff;
+    }
+.Customer-text{
+        margin-left: 10px;
+       padding-left: 30px;
+        height: 35px;
+        padding-right: 27px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        cursor: pointer;
+        background-color: #fff;
+    }
+.Report-text{
+        margin-left: 10px;
+        padding-left: 30px;
+        height: 35px;
+        padding-right: 45px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        cursor: pointer;
+        background-color: #fff;
+    }
+.Payment-text{
+        margin-left: 10px;
+        padding-left: 30px;
+        height: 35px;
+        padding-right: 32px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        cursor: pointer;
+        background-color: #fff;
+    }
+.Settings-text{
+        margin-left: 10px;
+        padding-left: 30px;
+        height: 35px;
+        padding-right: 42px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        cursor: pointer;
+        background-color: #fff;
+    }
+.Add-restaurant-option {
+    padding: 40px 20px 20px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: px;
+    background-color: #fff;
+    height: 170px;
+    width: 140px;
+    position: relative;
+    margin-top: 50px;
+    border-radius: 20px;
+    text-align: center;
+    }
+.Add-restaurant-icon {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: auto;
+    display: block;
+    border-radius: 50%;
+    padding: 10px;
+    }
+.Description-add-restaurant {
+    margin-top: 10px;
+    font-size: 11px;
+    color: black;
+    text-align: center;
+    }
+.Grow-add-restaurant {
+    margin-top: 10px;
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    }
+.Add-restaurant-button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background-color: #fff;
+    width: 100%;
+    }
+.log-out-option {
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    }
+.icons {
+    width: 20px;
+    height: auto;
+    display: block;
+}
+.log-out-option p {
+    margin: 0;
+    font-size: 16px;
+    color: black;
+}
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #FDF8E6;
+    width: 100%;
+    margin-left: 10px;
+    box-sizing: ;
+    color: black;
+    font-family: sans-serif;
+}
+.admin-photo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.admin-profile {
+    display: flex;
+    flex-direction: ;
+    gap: 15px;
+    align-items: center;
+}
+.admin-text p {
+    margin: 0;
+}
+.admin-text p:first-child {
+    font-size: 16px;
+    font-weight: bold;
+}
+.admin-text p:last-child {
+    font-size: 12px;
+    color: #555;
+}
+.search-bar {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 26px;
+    width: 300px;
+    outline: none;
+}
