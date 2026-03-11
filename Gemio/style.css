@@ -294,4 +294,40 @@ body{
 .dots-dropdown.open{
     display: block;
 }
+.chart-container {
+  background: #FDF8E6;
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  margin-left: 13px;
+  width: 600px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.chart-header h3 {
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+}
+.chart-filter{
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 6px 12px;
+}
+#reservationChart {
+  max-height: 250px;
+  width: 100% !important;
+  height: 100% !important; 
+}
+
 
