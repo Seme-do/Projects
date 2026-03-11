@@ -17,10 +17,29 @@ body{
 .General-button {
         display: flex;
         align-items: center;
-        margin-bottom: 25px;
-        width: 20px;
-        height: 20px;
+        gap: 12px;
+        margin-bottom: 8px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        cursor: pointer;
     }
+.General-button:hover {
+    background-color: #f0ece0;
+}
+.General-button .icon {
+    width: 20px;
+    font-size: 16px;
+    text-align: center;
+    color: #7c6f5b;
+}
+.General-button button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #3b3020;
+  font-weight: 500;
+}
 .left-sidebar {
     display: flex;
     flex-direction: column;
@@ -29,82 +48,6 @@ body{
     padding: 20px;
     min-height: 100vh;
 }
-.icon {
-    width: 20px;
-    height: 20px;
-    position: relative;
-    margin-right: -35px;
-}
-.Reservation-text {
-        margin-left: 10px;
-        padding-left: 30px;
-        height: 35px;
-        padding-right: 15px;
-        border-radius: 7px;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        background-color: #fff;
-    }
-.Overview-text{
-        margin-left: 10px;
-        padding-left: 30px;
-        height: 35px;
-        padding-right: 37px;
-        border: 1px solid #ccc;
-        border-radius: 7px;
-        cursor: pointer;
-        background-color: #fff;
-    }
-.Restaurant-text{
-        margin-left: 10px;
-        padding-left: 30px;
-        height: 35px;
-        padding-right: 22px;
-        border: 1px solid #ccc;
-        border-radius: 7px;
-        cursor: pointer;
-        background-color: #fff;
-    }
-.Customer-text{
-        margin-left: 10px;
-       padding-left: 30px;
-        height: 35px;
-        padding-right: 27px;
-        border: 1px solid #ccc;
-        border-radius: 7px;
-        cursor: pointer;
-        background-color: #fff;
-    }
-.Report-text{
-        margin-left: 10px;
-        padding-left: 30px;
-        height: 35px;
-        padding-right: 45px;
-        border: 1px solid #ccc;
-        border-radius: 7px;
-        cursor: pointer;
-        background-color: #fff;
-    }
-.Payment-text{
-        margin-left: 10px;
-        padding-left: 30px;
-        height: 35px;
-        padding-right: 32px;
-        border: 1px solid #ccc;
-        border-radius: 7px;
-        cursor: pointer;
-        background-color: #fff;
-    }
-.Settings-text{
-        margin-left: 10px;
-        padding-left: 30px;
-        height: 35px;
-        padding-right: 42px;
-        border: 1px solid #ccc;
-        border-radius: 7px;
-        cursor: pointer;
-        background-color: #fff;
-    }
 .Add-restaurant-option {
     padding: 40px 20px 20px;
     cursor: pointer;
@@ -151,24 +94,22 @@ body{
     background-color: #fff;
     width: 100%;
     }
+.icons {
+    font-size: 18px;
+    color: #7c6f5b;
+}
+.log-out-option:hover .icons,
+.log-out-option:hover p {
+    color: #e11d48;
+}
 .log-out-option {
-    margin-top: 20px;
-    padding-top: 10px;
-    padding-bottom: 0px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
     cursor: pointer;
-    }
-.icons {
-    width: 20px;
-    height: auto;
-    display: block;
-}
-.log-out-option p {
-    margin: 0;
-    font-size: 16px;
-    color: black;
 }
 .top-bar {
     display: flex;
@@ -179,7 +120,6 @@ body{
     background-color:  white;
     width: 100%;
     margin-left: 10px;
-    box-sizing: ;
     color: black;
     font-family: sans-serif;
     margin-top: 0px;
@@ -210,36 +150,33 @@ body{
     margin-top: 2px;
 }
 .search-icon{
-    width: 18px;
-    height: auto;
-    opacity: 0.5;
-    margin-right: -60px;
+    color: #6b7280;
+    font-size: 15px;
 }
 .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
     padding: 10px 20px;
     border: 1.5px solid #ccc;
-    border-radius: 26px;
-    width: 380px;
-    outline: none;
-    padding-left: 35px;
-    padding-right: 0px;
-    font-size: 13.5px;
-    outline: none;
+    border-radius: 999px;
+    gap: 10px;
+    width: 420px;
+    max-width: 100%;
 }
-.search-bar::placeholder{
-    color:  #aaa;
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #9ca3af;
+  font-size: 14px;
+  width: 100%;
 }
 .notification-icon,
-.message-icon{
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    cursor: pointer;
-    object-fit: contain;
-    padding: 10px;
-    transition: all 0.2s ease;
-    gap: 10px;
-    margin-right: 10px;
+.message-icon {
+  color: #6b7280;
+  font-size: 18px;
+  cursor: pointer;
 }
 .notification-icon:hover,
 .message-icon:hover {
@@ -282,13 +219,15 @@ body{
     transform: translate(-3px);
 }
 .stats-icon{
-    width: 46px;
-    height: 46px;
-    margin-bottom: 15px;
-    border-radius: 50%;
-    object-fit: contain;
-    padding: 10px;
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
 }
+.restaurant-icon  { color: #e07b3a; }   
+.reservation-icon { color: #3b82f6; }   
+.users-icon       { color: #6366f1; }   
+.pending-icon     { color: #f59e0b; } 
+.toprated-icon    { color: #eab308; }
 .each-stats p:nth-child(2) {
     font-size: 30px;
     font-weight: 800;
@@ -325,16 +264,17 @@ body{
     line-height: 1;
 }
 .three-dots-btn:hover {
-    background: #374151;
-    color: #fff;
+    background: #f5f0e8;
+    color: #e07b3a;
 }
 .dots-dropdown {
     display: none;
     position: absolute;
     right: 0;
     top: 30px;
-    background: #1f2937;
-    border: 1px solid #374151;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
     border-radius: 10px;
     overflow: hidden;
     min-width: 140px;
@@ -343,13 +283,13 @@ body{
     display: block;
     padding: 10px 16px;
     font-size: 13px;
-    color: #d1d5db;
+    color: #3b3020;
     text-decoration: none;
     transition: background 0.15s;
 }
 .dots-dropdown a:hover {
-    background: #374151;
-    color: #fff;
+    background: #f5f0e8;
+    color: #e07b3a;
 }
 .dots-dropdown.open{
     display: block;
