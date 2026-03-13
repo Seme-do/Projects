@@ -186,9 +186,11 @@ body{
     background-color: #FDF8E6;
     border: 1px solid #ccc;
     border-radius: 20px;
-    padding: 26px 28px;
+    padding: 23px 28px;
     margin: 32px 13px;
     margin-top: 0px;
+    height: 220px;
+    padding-top: 10px;
 }
 .current-stats> p{
     color: black;
@@ -214,6 +216,7 @@ body{
     transition: transform 0.2s;
     cursor: default;
     position: relative;
+    padding-bottom: 5px;
 }
 .each-stats:hover{
     transform: translate(-3px);
@@ -328,6 +331,43 @@ body{
   max-height: 250px;
   width: 100% !important;
   height: 100% !important; 
+}
+.recent-reservations {
+  background: #FDF8E6;
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  margin-left: 13px;
+  width: 600px;
+}
+.reservations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.reservations-header h3 {
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+}
+.reservations-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.reservations-table thead tr {
+  border-bottom: 1px solid #2a2d3a;
+}
+.reservations-table th {
+  color: #7c6f5b;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 16px;
+  text-align: left;
+}
+.reservations-table th i {
+  margin-right: 6px;
+  color: #4f6ef7;
 }
 
 
