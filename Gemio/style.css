@@ -130,6 +130,11 @@ body{
     height: 52px;
     border-radius: 50%;
     object-fit: cover;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.admin-photo:hover {
+    opacity: 0.7;
 }
 .admin-profile {
     display: flex;
@@ -216,7 +221,7 @@ body{
     transition: transform 0.2s;
     cursor: default;
     position: relative;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
 .each-stats:hover{
     transform: translate(-3px);
@@ -297,10 +302,12 @@ body{
 .dots-dropdown.open{
     display: block;
 }
+/* chart-container */
 .chart-container {
   background: #FDF8E6;
   border-radius: 16px;
   padding: 24px;
+  padding-top: 10px;
   margin-top: 24px;
   margin-left: 13px;
   width: 600px;
@@ -359,7 +366,7 @@ body{
   border-bottom: 1px solid #2a2d3a;
 }
 .reservations-table th {
-  color: #7c6f5b;
+  color: black;
   font-size: 13px;
   font-weight: 500;
   padding: 10px 16px;
@@ -367,7 +374,30 @@ body{
 }
 .reservations-table th i {
   margin-right: 6px;
-  color: #4f6ef7;
+  color: #7c6f5b;
 }
-
+.reservations-table td {
+  color: black;
+  font-size: 14px;
+  padding: 14px 16px;
+  border-bottom: 1px solid #2a2d3a;
+}
+.reservations-table tr:hover {
+  background: #7c6f5b;
+}
+/*Status badges*/
+.status {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.status.confirmed {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+.status.pending {
+  background: rgba(234, 179, 8, 0.1);
+  color: #eab308;
+}
 

@@ -58,3 +58,34 @@ new Chart(ctx, {
     }
   }
 });
+// Load saved profile on page load
+window.addEventListener('load', () => {
+  const savedPhoto = localStorage.getItem('adminPhoto');
+  const savedName = localStorage.getItem('adminName');
+
+  if (savedPhoto) {
+    document.getElementById('admin-photo').src = savedPhoto;
+  }
+  if (savedName) {
+    document.getElementById('admin-name').textContent = `Welcome back, ${savedName}`;
+  }
+});
+
+// Click photo to change it
+document.getElementById('admin-photo').addEventListener('click', () => {
+  document.getElementById('photo-upload').click();
+});
+
+// When new photo is selected
+document.getElementById('photo-upload').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const newPhoto = event.target.result;
+      document.getElementById('admin-photo').src = newPhoto;
+      localStorage.setItem('adminPhoto', newPhoto);
+    };
+    reader.readAsDataURL(file);
+  }
+});

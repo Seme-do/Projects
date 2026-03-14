@@ -79,13 +79,16 @@
     <div class="top-bar">
         <div class="admin-profile">
     <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
-     alt="profile Image" class="admin-photo">
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
      <div class="admin-text">
-    <p>Welcome back, Admin</p>
+    <p id="admin-name">Welcome back, Admin</p>
     <p >
         Manage restaurants, reservations, and platform activity.
     </p>
           </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
         </div>
         <div class="search-bar">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
@@ -96,7 +99,14 @@
        <i class="fa-solid fa-bell notification-icon"></i>
     </div>
     <div class="current-stats">
-        <p>Current Stats</p>
+        <div class="reservations-header">
+        <h3>Current stats</h3>
+        <select class="chart-filter">
+            <option>Monthly</option>
+            <option>Weekly</option>
+            <option>Yearly</option>
+        </select>
+      </div>
         <div class="stats">
         <div class="each-stats">
             <i class="fa-solid fa-utensils stats-icon restaurant-icon"></i>
@@ -201,28 +211,35 @@
                 <td>Brian Otieno</td>
                 <td>Flo Gardens</td>
                 <td>3 People</td>
-                <td>Confirmed</td>
+                <td><span class="status confirmed">● Confirmed</span></td>
             </tr>
             <tr>
                 <td>12-04-2026</td>
                 <td>Wendy Mwangi</td>
                 <td>Java House</td>
                 <td>2 People</td>
-                <td>Confirmed</td>
+                <td><span class="status confirmed">● Confirmed</span></td>
             </tr>
             <tr>
                 <td>12-03-2026</td>
                 <td>Angela Kimani</td>
                 <td>Artcaffe</td>
                 <td>4 people</td>
-                <td>confirmed</td>
+                <td><span class="status confirmed">● Confirmed</span></td>
             </tr>
             <tr>
                 <td>12-05-2026</td>
                 <td>Kate Maina</td>
                 <td>Flo Gardens</td>
                 <td>2 People</td>
-                <td>Pending</td>
+                <td><span class="status pending">● Pending</span></td>
+            </tr>
+            <tr>
+                <td>12-05-2026</td>
+                <td>Joel Seme</td>
+                <td>Serene Gardens</td>
+                <td>3 People</td>
+                <td><span class="status cancelled">● Cancelled</span></td>
             </tr>
         </tbody>
       </table>
