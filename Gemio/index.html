@@ -176,6 +176,7 @@
         </div>
         </div>
     </div>
+    <div class="charts-section">
    <div class="chart-container">
      <div class="chart-header">
         <h3>Reservation Trends</h3>
@@ -188,6 +189,40 @@
      </div>
      <canvas id="reservationChart"></canvas>
    </div>
+   <div class="reservation-donut">
+    <div class="donut-header">
+            <h3>Recent Reservations</h3>
+            <i class="fa solid fa-ellipsis-vertical"></i>
+   </div>
+   <div class="donut-body">
+    <div class="donut-legend">
+        <div class="legend-item">
+            <span class="dot" style="background:#a855f7;"></span>
+            <p>Fine Dining</p>
+        </div>
+        <div class="legend-item">
+            <span class="dot" style="background:#ec4899;"></span>
+            <p>Casual Dining</p>
+        </div>
+        <div class="legend-item">
+            <span class="dot" style="background:#22c55e;"></span>
+            <p>Cafes</p>
+        </div>
+        <div class="legend-item">
+            <span class="dot" style="background:#f59e0b;"></span>
+            <p>Fast Food</p>
+        </div>
+    </div>
+    <div class="donut-chart-wrap">
+        <canvas id="donutChart"></canvas>
+        <div class="donut-center">
+            <p class="donut-percent">65%</p>
+            <p class="donut-label">Capacity</p>
+        </div>
+    </div>
+   </div>
+   </div>
+</div>
    <div class="bottom-section">
    <div class="recent-reservations">
       <div class="reservations-header">
@@ -248,7 +283,8 @@
         </tbody>
       </table>
    </div>
-   <div class="top-restaurants">
+   
+<div class="top-restaurants">
     <div class="top-rest-header">
             <h3>Top Restaurants Today</h3>
             <i class="fa solid fa-ellipsis-vertical"></i>

@@ -89,3 +89,32 @@ document.getElementById('photo-upload').addEventListener('change', (e) => {
     reader.readAsDataURL(file);
   }
 });
+// Recent Reservations
+const donutCtx = document.getElementById('donutChart').getContext('2d');
+
+new Chart(donutCtx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Fine Dining', 'Casual Dining', 'Cafes', 'Fast Food'],
+    datasets: [{
+      data: [30, 25, 20, 25],
+      backgroundColor: ['#a855f7', '#ec4899', '#22c55e', '#f59e0b'],
+      borderWidth: 0,
+      hoverOffset: 6,
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '75%',
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#FDF8E6',
+        titleColor: 'black',
+        bodyColor: '#9ca3af',
+        padding: 10,
+        borderRadius: 8,
+      }
+    }
+  }
+});
