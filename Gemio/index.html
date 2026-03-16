@@ -105,6 +105,7 @@
             <option>Monthly</option>
             <option>Weekly</option>
             <option>Yearly</option>
+            <option>Daily</option>
         </select>
       </div>
         <div class="stats">
@@ -182,10 +183,12 @@
             <option>Monthly</option>
             <option>Weekly</option>
             <option>Yearly</option>
+            <option>Daily</option>
         </select>
      </div>
      <canvas id="reservationChart"></canvas>
    </div>
+   <div class="bottom-section">
    <div class="recent-reservations">
       <div class="reservations-header">
         <h3>Recent Reservation</h3>
@@ -193,6 +196,7 @@
             <option>Monthly</option>
             <option>Weekly</option>
             <option>Yearly</option>
+            <option>Daily</option>
         </select>
       </div>
       <table class="reservations-table">
@@ -243,6 +247,58 @@
             </tr>
         </tbody>
       </table>
+   </div>
+   <div class="top-restaurants">
+    <div class="top-rest-header">
+            <h3>Top Restaurants Today</h3>
+            <i class="fa solid fa-ellipsis-vertical"></i>
+   </div>
+
+   <div class="rest-item">
+    <div class="rest-rank">1</div>
+    <div class="rest-info">
+        <p class="rest-name">Serene Gardens</p>
+        <p class="rest-count">30 Reservation</p>
+    </div>
+    <div class="rest-circle" style="--percent: 37; --color: #f97316;">
+        <svg viewBox="0 0 36 36">
+            <path class="bg" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32"/>
+            <path class="fill" style="stroke:#a855f7; stroke-dasharray: 62 100;" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32"/>
+      </svg>
+      <span>37%</span>
+    </div>
+   </div>
+
+   <div class="rest-item">
+      <div class="rest-rank">2</div>
+      <div class="rest-info">
+        <p class="rest-name">Java House</p>
+        <p class="rest-count">26 Reservations</p>
+      </div>
+      <div class="rest-circle" style="--percent: 62; --color: #a855f7;">
+        <svg viewBox="0 0 36 36">
+           <path class="bg" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32"/>
+           <path class="fill" style="stroke:#a855f7; stroke-dasharray: 62 100;" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32"/> 
+        </svg>
+        <span>62%</span>
+      </div>
+   </div>
+
+   <div class="rest-item">
+     <div class="rest-rank">3</div>
+     <div class="rest-info">
+        <p class="rest-name">Artcaffe</p>
+        <p class="rest-count">20 Reservations</p>
+     </div>
+     <div class="rest-circle" style="--percent: 20; --color: #22c55e;">
+        <svg veiwBox="0 0 36 36">
+           <path class="bg" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32"/>
+           <path class="fill" style="stroke:#22c55e; stroke-dasharray: 20 100;" d="M18 2 a 16 16 0 1 1 0 32 a 16 16 0 1 1 0 -32"/> 
+        </svg>
+        <span>20%</span>
+     </div>
+   </div>
+   </div>
    </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js">
