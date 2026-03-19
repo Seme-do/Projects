@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemio - Restaurants</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body>
+        <div class="left-sidebar">
+            <div class="Gemio-title">
+            <img src="thumbnails/download (1).svg"
+                alt="Logo" class="logo">
+            <h1>Gemio</h1>
+        </div>
+            <h4>General</h4>
+            <div class="General-button " id="overview">
+            <i class="fa-solid fa-house icon"></i>
+            <button class="Overview-text" 
+            onclick="showSection('overview')">
+                Overview
+            </button>
+            </div>
+            <div class="General-button">
+            <i class="fa-solid fa-utensils icon"></i>
+            <button class="Restaurant-text" 
+            onclick="showSection('restaurants')">
+                Restaurants
+            </button>
+            </div>
+             <div class="General-button">
+             <i class="fa-solid fa-calendar-check icon"></i>
+                 <button class="Reservation-text" 
+                 onclick="showSection('reservations')">
+                    Reservations
+                </button>
+            </div>
+            <div class="General-button">
+            <i class="fa-solid fa-users icon"></i>
+            <button class="Customer-text"
+             onclick="showSection('Customers')">
+                Customers
+            </button>
+            </div>
+             <div class="General-button">
+            <i class="fa-solid fa-users icon"></i>
+                <button class="Report-text" 
+                onclick="showSection('reports')">
+                    Reports
+                </button>
+             </div>
+            <div class="General-button">
+            <i class="fa-solid fa-credit-card icon"></i>
+            <button class="Payment-text"
+            onclick="showSection('help center')">
+                Help Center
+            </button>
+            </div>
+            <div class="General-button">
+            <i class="fa-solid fa-gear icon"></i>
+            <button class="Settings-text"
+            onclick="showSection('settings')">
+                Settings
+            </button>
+            </div>
+              <div class="Add-restaurant-option">  
+            <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+            <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+            <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+            </p>
+            <button class="Add-restaurant-button">
+                Add Restaurant
+            </button>
+              </div>
+              <div class="log-out-option">
+              <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+              </div>
+        </div>
+        <div class="General-main">
+    <div class="top-bar">
+        <div class="admin-profile">
+    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
+     <div class="admin-text">
+    <p id="admin-name">Welcome back, Admin</p>
+    <p >
+        Manage restaurants, reservations, and platform activity.
+    </p>
+          </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" placeholder="Search restaurants, users, reservations...">
+        </div>
+       <i class="fa-solid fa-bell notification-icon"></i>
+       <i class="fa-regular fa-message message-icon"></i>
+       <i class="fa-solid fa-bell notification-icon"></i>
+    </div>
+    <!--RESTAURANTS CONTENT-->
+    <div class="restaurants-content">
+        <!--Header-->
+        <div class="section-header">
+            <div class="header-left">
+                <a href="index.html">
+                    <i class="fa-solid fa-arrow-left back-arrow"></i>
+                </a>
+                <h2>All Restaurants</h2>
+            </div>
+            <div class="section-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search restaurants..."
+                   oninput="searchRestaurants(this.value)">
+            </div>
+        </div>
+        <!--Stats Row-->
+        <div class="rest-stats">
+            <div class="rest-stat-card">
+                <i class="fa-solid fa-utensils"></i>
+                <div>
+                    <p class="stat-number">132</p>
+                    <p class="stat-label">Total Restaurants</p>
+                </div>
+            </div>
+        <div class="rest-stat-card">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+                <p class="stat-number">110</p>
+                <p class="stat-label">Active</p>
+            </div>
+        </div>
+        <div class="rest-stat-card">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <div>
+                <p class="stat-number">22</p>
+                <p class="stat-label">Inactive</p>
+            </div>
+          </div>
+        </div>
+        <!--Filter-->
+        <div class="section-toolbar">
+            <select class="section-filter" onchange="filterResturants(this.value)">
+                <option value="all">All status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+        <!--Table-->
+        <div class="section-table-wrap">
+            <table class="section-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><i class="fa-solid fa-utensils"></i>Restaurant Name</th>
+                        <th><i class="fa-solid fa-location-dot"></i>Location</th>
+                        <th><i class="fa-solid fa-circle-check"></i>Status</th>
+                        <th><i class="fa-solid fa-star"></i>Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="resturantsList">
+                <tr onclick="window.location='restaurant-detail.html?name=Flo Gardens'"
+                      data-status="active">
+                    <td>1</td>
+                    <td class="rest-name-link">Flo Gardens</td>
+                    <td>Nairobi</td>
+                    <td><span class="status confirmed">● Active</span></td>
+                    <td>⭐ 4.8</td>
+                </tr>
+                <tr onclick="window.location='restaurant-detail.html?name=Java House'"
+                      data-status="active">
+                    <td>2</td>
+                    <td class="rest-name-link">Java House</td>
+                    <td>Nairobi</td>
+                    <td><span class="status confirmed">● Active</span></td>
+                    <td>⭐ 4.5</td>
+                </tr>
+                <tr onclick="window.location='restaurant-detail.html?name=Artcaffe'"
+                      data-status="active">
+                    <td>3</td>
+                    <td class="rest-name-link">Artcaffe</td>
+                    <td>Nairobi</td>
+                    <td><span class="status confirmed">● Active</span></td>
+                    <td>⭐ 4.3</td>
+                </tr>
+                <tr onclick="window.location='restaurant-detail.html?name-Serene Gardens'"
+                      data-status="active">
+                    <td>4</td>
+                    <td class="rest-name-link">Serene Gardens</td>
+                    <td>Nairobi</td>
+                    <td><span class="status pending">● Active</span></td>
+                    <td>⭐ 4.6</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="restaurants.js"></script>
+    </body>
+</html>

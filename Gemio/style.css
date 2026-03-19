@@ -47,6 +47,7 @@ body{
     background-color:  #FDF8E6;
     padding: 20px;
     min-height: 100vh;
+    overflow-y: auto;
 }
 .Add-restaurant-option {
     padding: 40px 20px 20px;
@@ -57,7 +58,7 @@ body{
     height: 170px;
     width: 140px;
     position: relative;
-    margin-top: 50px;
+    margin-top: auto;
     border-radius: 20px;
     text-align: center;
     }
@@ -294,6 +295,7 @@ body{
     color: #3b3020;
     text-decoration: none;
     transition: background 0.15s;
+    pointer-events: auto;
 }
 .dots-dropdown a:hover {
     background: #f5f0e8;
@@ -597,4 +599,125 @@ body{
   justify-content: space-between;
   gap: 20px;
 }
-
+/*Stats Row*/
+.rest-stat-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.rest-stat-card i {
+  font-size: 24px;
+  color: #e07b3a;
+}
+.stat-number {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3b3020;
+}
+.stat-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+.rest-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+/*Toolbar*/
+.section-toolbar {
+  margin-bottom: 16px;
+}
+.section-filter {
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #3b3020;
+  cursor: pointer;
+  outline: none;
+}
+/*Table*/
+.section-table-wrap {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0);
+}
+.section-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.section-table thead tr {
+  background: #FDF6E3
+  border-bottom: 1px solid #e5e7eb;
+}
+.section-table th {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
+}
+.section-table th i {
+  margin-right: 6px;
+  color: #e07b3a;
+}
+section-table td {
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #3b3020;
+}
+.section-table tr:hover {
+  background: #fdf6e3;
+  cursor: pointer;
+}
+.rest-name-link {
+  color: #e07b3a;
+  font-weight: 600;
+  text-decoration: underline;
+}
+/*Header*/
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.back-arrow {
+  color: #e07b3a;
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+.back-arrow:hover {
+  transform: translateX(-3px);
+}
+.section-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3b3020;
+}
+.section-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 16px;
+  width: 280px;
+}
+.section-search i { color: #9ca3af; }
+.section-search input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  color: #3b3020;
+}
