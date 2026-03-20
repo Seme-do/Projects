@@ -628,7 +628,7 @@ body{
   display: flex;
   gap: 16px;
   margin-bottom: 20px;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 /*Toolbar*/
 .section-toolbar {
@@ -670,7 +670,7 @@ body{
   margin-right: 6px;
   color: #e07b3a;
 }
-section-table td {
+.section-table td {
   padding: 14px 18px;
   font-size: 14px;
   color: #3b3020;
@@ -712,6 +712,7 @@ section-table td {
   border-radius: 8px;
   padding: 10px 16px;
   width: 280px;
+  margin-bottom: 13px;
 }
 .section-search i { color: #9ca3af; }
 .section-search input {
@@ -720,4 +721,11 @@ section-table td {
   font-size: 14px;
   width: 100%;
   color: #3b3020;
+}
+.restaurants-content {
+  padding: 24px;
+  background-color: #FDF8E6;
+  margin-left: 13px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
 }
