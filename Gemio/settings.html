@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body> 
+        <div class="left-sidebar">
+            <div class="Gemio-title">
+            <img src="thumbnails/download (1).svg"
+                alt="Logo" class="logo">
+            <h1>Gemio</h1>
+        </div>
+            <h4>General</h4>
+            <div class="General-button " onclick="showSection('overview')">
+            <i class="fa-solid fa-house icon"></i>
+            <button class="Overview-text">
+                Overview
+            </button>
+            </div>
+            <div class="General-button" onclick="showSection('restaurants')">
+            <i class="fa-solid fa-utensils icon"></i>
+            <button class="Restaurant-text">
+                Restaurants
+            </button>
+            </div>
+             <div class="General-button" onclick="showSection('reservations')">
+             <i class="fa-solid fa-calendar-check icon"></i>
+                 <button class="Reservation-text">
+                    Reservations
+                </button>
+            </div>
+            <div class="General-button" onclick="showSection('Customers')">
+            <i class="fa-solid fa-users icon"></i>
+            <button class="Customer-text">
+                Customers
+            </button>
+            </div>
+             <div class="General-button" onclick="showSection('Reports')">
+            <i class="fa-solid fa-users icon"></i>
+                <button class="Report-text">
+                    Reports
+                </button>
+             </div>
+            <div class="General-button" onclick="showSection('help center')">
+            <i class="fa-solid fa-credit-card icon"></i>
+            <button class="Payment-text">
+                Help Center
+            </button>
+            </div>
+            <div class="General-button" onclick="showSection('settings')">
+            <i class="fa-solid fa-gear icon"></i>
+            <button class="Settings-text">
+                Settings
+            </button>
+            </div>
+              <div class="Add-restaurant-option">  
+            <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+            <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+            <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+            </p>
+            <button class="Add-restaurant-button">
+                Add Restaurant
+            </button>
+              </div>
+              <div class="log-out-option">
+              <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+              </div>
+        </div>
+        <div class="General-main">
+    <div class="top-bar">
+        <div class="admin-profile">
+    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
+     <div class="admin-text">
+    <p id="admin-name">Welcome back, Admin</p>
+    <p >
+        Manage restaurants, reservations, and platform activity.
+    </p>
+          </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" placeholder="Search restaurants, users, reservations...">
+        </div>
+       <i class="fa-solid fa-bell notification-icon"></i>
+       <i class="fa-regular fa-message message-icon"></i>
+       <i class="fa-solid fa-bell notification-icon"></i>
+    </div>
+    <!--SETTINGS WRAPPER-->
+    <div class="settings-wrapper">
+        <!--SETTINGS SIDEBAR-->
+        <div class="settings-sidebar">
+            <h3>Settings</h3>
+            <div class="settings-menu-item active" onclick="showSettings('account')">
+                <i class="fa-solid fa-user"></i>
+                <span>Account</span>
+            </div>
+            <div class="settings-menu-item" onclick="showSettings('platform', this)">
+                <i class="fa-solid fa-building"></i>
+                <span>Platform</span>
+            </div>
+            <div class="settings-menu-item" onclick="showSettings('restaurants', this)">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Restaurants</span>
+            </div>
+            <div class="settings-menu-item" onclick="showSettings('notifications', this)">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+            </div>
+            <div class="settings-menu-item" onclick="showSettings('appearance', this)">
+                <i class="fa-solid fa-palette"></i>
+                <span>Appearance</span>
+            </div>
+            <div class="settings-menu-item" onclick="showSettings('security', this)">
+                <i class="fa-solid fa-lock"></i>
+                <span>Security</span>
+            </div>
+            <div class="settings-menu-item" onclick="showSettings('help', this)">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Help</span>
+            </div>
+        </div>
+        <!--SETTINGS CONTENT-->
+        <div class="settings-content">
+            <!--content Will load here based on what you click-->
+            <div id="account" class="settings-section">
+                <h2>Account Settings</h2>
+                <!--Profile Info-->
+                <div class="settings-card">
+                    <h3 class="settings-card-title">
+                        <i class="fa-solid fa-user"></i>
+                        Profile Info
+                    </h3>
+                </div>
+                <div class="profile-info">
+                    <!--Photo-->
+                <div class="profile-photo-wrap">
+                    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                      alt="profile" class="settings-photo" id="settings-photo">
+                <div class="photo-overlay" onclick="document.getElementById('settings-photo-upload').click()">
+                    <i class="fa-solid fa-camera"></i>
+                </div>
+                <input type="file" id="settings-photo-upload" accept="image/*" style="display: none;">
+                </div>
+                <!--Info Fields-->
+                <div class="profile-fields">
+                    <div class="field-group">
+                        <label>Full Name</label>
+                        <input type="text" id="admin-fullname" value="Admin" disabled>
+                    </div>
+                    <div class="field-group">
+                        <label>Email</label>
+                        <input type="email" id="admin-email" value="admin@gmail.com" disabled>
+                    </div>
+                    <div class="field-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="admin-phone" value="+254 700 000 000" disabled>
+                    </div>
+                    <div class="field-group">
+                        <label>Role</label>
+                        <input type="text" value="Administrator" disabled>
+                    </div>
+                </div>
+                </div>
+                <!--Edit Button-->
+                <div class="settings-actions">
+                    <button class="edit-btn" onclick="toggleEdit()">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit
+                    </button>
+                    <button class="save-btn" id="save-btn" style="display: none;" onclick="saveProfile()">
+                        <i class="fa-solid fa-fa-check"></i>
+                        Save Changes
+                    </button>
+                    <button class="cancel-btn" id="cancel-btn" style="display: none;" onclick="cancelEdit()">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+            <!--Security-->
+            <div class="settings-card">
+                <h3 class="settings-card-title">
+                    <i class="fa-solid fa-lock"></i>
+                    Security
+                </h3>
+                <div class="field-group">
+                    <label>Current Password</label>
+                    <input type="password" placeholder="Enter current password">
+                </div>
+                <div class="field-group">
+                    <label>New Password</label>
+                    <input type="password" placeholder="Enter new password">
+                </div>
+                <div class="field-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm new password">
+                </div>
+                <!--2FA Toggle-->
+                <div class="toggle-row">
+                    <div>
+                        <p class="toggle-title">Two Factor Authenciation</p>
+                        <p class="toggle-desc">Add an extra layer of security to your account</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="twofa-toggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <button class="save-btn" style="margin-top: 16px">
+                    <i class="fa-solid fa-lock"></i>
+                    Update Password 
+                </button>
+            </div>
+            <!--Login Activity-->
+            <div class="settings-card">
+                <h3 class="settings-card-title">
+                    <i class="fa-solid fa-clock"></i>
+                    Login Activity
+                </h3>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fa-solid fa-desktop"></i>
+                    </div>
+                    <div class="activity-info">
+                        <p class="activity-device">Window PC - Chrome</p>
+                        <p class="activity-time">Today at 10;30 AM . Nairobi, Kenya</p>
+                    </div>
+                    <span class="status confirmed">● Current</span>
+                </div>
+            </div>
+        
+        <!--SESSIONS-->
+        <div class="settings-card">
+            <h3 class="settings-card-title">
+                <i class="fa-solid fa-desktop"></i>
+                Sessions
+            </h3>
+            <div class="sessions-btns">
+                <button class="logout-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout Current Device
+                </button>
+            </div>
+            <div class="sessions-btns">
+                <button class="logout-all-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout All Devices
+                </button>
+            </div>
+        </div>
+        <!--DANGER ZONE-->
+        <div class="settings-card danger-card">
+            <h3 class="settings-card-title danger-title">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                Danger Zone
+            </h3>
+            <p class="danger-desc">
+                Once you delete your account all data will be permanently lost. This action cannot be undone
+            </p>
+            <button class="delete-btn">
+                <i class="fa-solid fa-trash"></i>
+                Delete Account
+            </button>
+        </div>
+    </div>
+            <div id="platform" class="settings-section" style="display: none;">
+                <h2>Platform</h2>
+            </div>
+            <div id="resturants" class="settings-section" style="display: none;">
+                <h2>Restaurants</h2>
+            </div>
+            <div id="notifications" class="settings-section" style="display: none;">
+                <h2>Notifications</h2>
+            </div>
+            <div id="appearance" class="settings-section" style="display: none;">
+                <h2>Appearance</h2>
+            </div>
+            <div id="security" class="settings-section" style="display: none;">
+                <h2>Security</h2>
+            </div>
+            <div id="help" class="settings-section" style="display: none;">
+                <h2>Help</h2>
+            </div>
+        </div>
+    </div>
