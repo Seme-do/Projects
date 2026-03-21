@@ -105,7 +105,7 @@
         <!--SETTINGS SIDEBAR-->
         <div class="settings-sidebar">
             <h3>Settings</h3>
-            <div class="settings-menu-item active" onclick="showSettings('account')">
+            <div class="settings-menu-item active" onclick="showSettings('account', this)">
                 <i class="fa-solid fa-user"></i>
                 <span>Account</span>
             </div>
@@ -145,7 +145,6 @@
                         <i class="fa-solid fa-user"></i>
                         Profile Info
                     </h3>
-                </div>
                 <div class="profile-info">
                     <!--Photo-->
                 <div class="profile-photo-wrap">
@@ -191,6 +190,7 @@
                     </button>
                 </div>
             </div>
+            
             <!--Security-->
             <div class="settings-card">
                 <h3 class="settings-card-title">
@@ -254,8 +254,8 @@
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Logout Current Device
                 </button>
-            </div>
-            <div class="sessions-btns">
+            
+            
                 <button class="logout-all-btn">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     Logout All Devices
@@ -296,7 +296,7 @@
                 <h2>Help</h2>
             </div>
         </div>
-    </div>
+        </div>
     <script src="settings.js"></script>
     </body>
 </html>
