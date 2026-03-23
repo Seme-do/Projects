@@ -279,6 +279,147 @@
     </div>
             <div id="platform" class="settings-section" style="display: none;">
                 <h2>Platform</h2>
+                <div class="settings-card">
+                    <h3 class="settings-card-title">
+                        <i class="fa-solid fa-globe"></i>
+                        General
+                    </h3>
+                    <div class="field-group">
+                        <label>Platform Name</label>
+                        <input type="text" value="Gemio.app" placeholder="Platform Name">
+                    </div>
+                    <div class="field-group">
+                        <label>Platform Logo</label>
+                        <div class="logo-upload">
+                            <img src="thumbnails/download (1).svg" alt="logo" class="platform-logo">
+                            <button class="edit-btn" onclick="document.getElementById('logo-upload')">
+                                <i class="fa-solid fa-upload"></i>
+                                Upload Logo
+                            </button>
+                            <input type="file" id="logo" accept="image/*" style="display=none">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Gemio Email</label>
+                        <input type="email" value="business.hiddengemske@gamio.com" placeholder="Gemio Email">
+                    </div>
+                    <button class="save-btn" style="margin-top: 8px">
+                        <i class="fa-solid fa-check"></i>
+                        Save Changes
+                    </button>
+                </div>
+                <!--Regional-->
+                <div class="settings-card">
+                    <h3 class="settings-card-title">
+                        <i class="fa-solid fa-earth-africa"></i>
+                        Regional
+                    </h3>
+                    <div class="field-group">
+                        <label>Currency</label>
+                        <select class="settings-select">
+                            <option value="KES" selected> KES - Kenyan Shilling</option>
+                            <option value="USD">USD - US Dollar</option>
+                            <option value="EUR">EUR - Euro</option>
+                            <option value="GBP">GBP - British Pound</option>
+                        </select>
+                    </div>
+                    <div class="field-group">
+                        <label>Time Zone</label>
+                        <select class="settings-select">
+                            <option value="Africa/Nairobi" selected>Africa/Nairobi</option>
+                            <option value="UTC">UTC (GMT+0)</option>
+                            <option value="Europe/London">Europe/London (GMT+1)</option>
+                            <option value="America/New_York">America/New_York (GMT-5</option>
+                        </select>
+                    </div>
+                    <button class="save-btn" style="margin-top: 8px;">
+                        <i class="fa-solid fa-check"></i>
+                        Save Changes
+                    </button>
+                </div>
+                <!--Registration-->
+                <div class="settings-card">
+                    <h3 class="settings-card-title">
+                        <i class="fa-solid fa-file-pen"></i>
+                        Registration
+                    </h3>
+                <div class="toggle-row">
+                    <div>
+                        <p class="toggle-title">Allow Signups</p>
+                        <p class="toggle-desc">Allow new users to register on the platform</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <div>
+                        <p class="toggle-title">Auto Approve Restaurants</p>
+                        <p class="toggle-desc">Automatically approve new restaurant registrations</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                </div>
+                <!--Categories-->
+                <div class="settings-card">
+                    <h3 class="settings-card-title">
+                        <i class="fa-solid fa-list"></i>
+                        Categories
+                    </h3>
+                    <div class="categories-list" id="categoriesList">
+                        <div class="category-item">
+                            <span>Fine Dining</span>
+                            <i class="fa-solid fa-trash delete-category"></i>
+                        </div>
+                        <div class="category-item">
+                            <span>Casual Dining</span>
+                            <i class="fa-solid fa-trash delete-category"></i>
+                        </div>
+                        <div class="category-item">
+                            <span>Cafes</span>
+                            <i class="fa-solid fa-trash delete-category"></i>
+                        </div>
+                        <div class="category-item">
+                            <span>Fast Food</span>
+                            <i class="fa-solid fa-trash delete-category"></i>
+                        </div>
+                        <div class="category-item">
+                            <span>Buffet</span>
+                            <i class="fa-solid fa-trash delete-category"></i>
+                        </div>
+                    </div>
+                        <div class="add-category">
+                            <input type="text" id="newCategory" placeholder="New category name...">
+                            <button class="edit-btn" onclick="addCategory()">
+                                <i class="fa-solid fa-plus"></i>
+                                Add
+                            </button>
+                        </div>
+                </div>
+                <div class="settings-card">
+                    <h3 class="settings-card-title">
+                        <i class="fa-solid fa-gear"></i>
+                        System
+                    </h3>
+                    <div class="toggle-row">
+                        <div>
+                            <p class="toggle-title">Maintenance Mode</p>
+                            <p class="toggle-desc">Temporarily disable the platform for maintenance</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="maintenance-toggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="maintenance-warning" id="maintenance-warning" style="display:none;">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Platform is currently in maintenance mode - users cannot access it!
+                    </div>
+                </div>
             </div>
             <div id="resturants" class="settings-section" style="display: none;">
                 <h2>Restaurants</h2>
