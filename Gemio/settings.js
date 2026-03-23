@@ -53,3 +53,44 @@ document.getElementById('settings-photo-upload').addEventListener('change', (e) 
     reader.readAsDataURL(file);
   }
 });
+// Add Category
+function addCategory() {
+  const input = document.getElementById('newCategory');
+  const value = input.value.trim();
+  if (!value) return;
+
+  const list = document.getElementById('categoriesList');
+  const div = document.createElement('div');
+  div.className = 'category-item';
+  div.innerHTML = `
+    <span>${value}</span>
+    <i class="fa-solid fa-trash delete-category" onclick="this.parentElement.remove()"></i>
+  `;
+  list.appendChild(div);
+  input.value = '';
+}
+
+// Delete existing categories
+document.querySelectorAll('.delete-category').forEach(icon => {
+  icon.addEventListener('click', function() {
+    this.parentElement.remove();
+  });
+});
+
+// Maintenance Mode toggle
+document.getElementById('maintenance-toggle').addEventListener('change', function() {
+  const warning = document.getElementById('maintenance-warning');
+  warning.style.display = this.checked ? 'flex' : 'none';
+});
+
+// Logo upload
+document.getElementById('logo-upload').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      document.getElementById('platform-logo').src = event.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
