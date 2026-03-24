@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body> 
+        <div class="left-sidebar">
+            <div class="Gemio-title">
+            <img src="thumbnails/download (1).svg"
+                alt="Logo" class="logo">
+            <h1>Gemio</h1>
+        </div>
+            <h4>General</h4>
+            <div class="General-button " onclick="showSection('overview')">
+            <i class="fa-solid fa-house icon"></i>
+                <a href="index.html">
+            <button class="Overview-text">
+                Overview
+            </button>
+                </a>
+            </div>
+            <div class="General-button" onclick="showSection('restaurants')">
+            <i class="fa-solid fa-utensils icon"></i>
+                <a href="restaurants.html">
+            <button class="Restaurant-text">
+                Restaurants
+            </button>
+                </a>
+            </div>
+             <div class="General-button" onclick="showSection('reservations')">
+             <i class="fa-solid fa-calendar-check icon"></i>
+                 <button class="Reservation-text">
+                    Reservations
+                </button>
+            </div>
+            <div class="General-button" onclick="showSection('Customers')">
+            <i class="fa-solid fa-users icon"></i>
+            <button class="Customer-text">
+                Customers
+            </button>
+            </div>
+             <div class="General-button" onclick="showSection('Reports')">
+            <i class="fa-solid fa-users icon"></i>
+                <button class="Report-text">
+                    Reports
+                </button>
+             </div>
+            <div class="General-button" onclick="showSection('help center')">
+            <i class="fa-solid fa-credit-card icon"></i>
+            <button class="Payment-text">
+                Help Center
+            </button>
+            </div>
+            <div class="General-button" onclick="showSection('settings')">
+            <i class="fa-solid fa-gear icon"></i>
+               <a href="settings.html">
+            <button class="Settings-text">
+                Settings
+            </button>
+                </a>
+            </div>
+              <div class="Add-restaurant-option">  
+            <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+            <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+            <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+            </p>
+            <button class="Add-restaurant-button">
+                Add Restaurant
+            </button>
+              </div>
+              <div class="log-out-option">
+              <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+              </div>
+        </div>
+        <div class="General-main">
+    <div class="top-bar">
+        <div class="admin-profile">
+    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
+     <div class="admin-text">
+    <p id="admin-name">Welcome back, Admin</p>
+    <p >
+        Manage restaurants, reservations, and platform activity.
+    </p>
+          </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" placeholder="Search restaurants, users, reservations...">
+        </div>
+       <i class="fa-solid fa-bell notification-icon"></i>
+       <i class="fa-regular fa-message message-icon"></i>
+       <i class="fa-solid fa-bell notification-icon"></i>
+    </div>
+    <!--HELP CENTER CONTENT-->
+    <div class="help-content">
+        <!--PAGE HEADER-->
+        <div class="help-header">
+            <h2>Help Center</h2>
+            <p>Find answers, tutorials and learn how Gemio works</p>
+        </div>
+        <div class="help-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search help articles..."
+               oninput="searchHelp(this.value)">
+        </div>
+    </div>
+    <!--FAQS-->
+    <div class="help-section" id="faq-section">
+        <h3 class="help-section-title">
+            <i class="fa-solid fa-circle-question"></i>
+            Frequently Asked Questions
+        </h3>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fa-solid fa-lock"></i>
+                    <h4>How do I reset my password</h4>
+                </div>
+                <p class="faq-answer">
+                    To reset password, go to <strong>Settings → Account → Security</strong>. 
+                    Enter your current password, then type your new password and confirm it 
+                    Click <strong>Update Password</strong> to save you changes.
+                </p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fa-solid fa-utensils"></i>
+                    <h4>How do I add a restaurant?</h4>
+                </div>
+                <p class="faq-answer">
+                     Click the <strong>Add Restaurant</strong> button on the left sidebar or go to 
+                     <strong>Restaurants</strong> page and click the <strong>+ Add Restaurant</strong> button. 
+                     Fill in the restaurant details and click Save.
+                </p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <h4>Why is my payment not going through</h4>
+                </div>
+                <p class="faq-answer">
+                    Payment issues can occur due to several reasons: insufficient funds, 
+                    incorrect card details, or network problems. Make sure your card details 
+                    are correct and your account has sufficient balance. If the problem persists 
+                    contact support at <strong>support@gemio.com</strong>.
+                </p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <h4>Can I edit restaurant details?</h4>
+                </div>
+                <p class="faq-answer">
+                    Yes! Go to the <strong>Restaurants</strong> page, click on the restaurant 
+                    you want to edit, then click the <strong>Edit</strong> button. You can update 
+                    the name, location, cuisine type, status and other details. Click 
+                    <strong>Save Changes</strong> when done.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--Tutorials-->
+    <div class="help-section" id="tutorials-section">
+        <h3 class="help-section-title">
+            <i class="fa-solid fa-book-open"></i>
+            Step-by-step Tutorials
+        </h3>
+    </div>
+    <div class="tutorials-grid">
+        <!--Tutorial 1-->
+        <div class="tutorial-card">
+            <div class="tutorial-header">
+                <div class="tutorial-icon">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <h4>How to Add a Restaurant</h4>
+            </div>
+            <ol class="tutorial-steps">
+                <li>Click <strong>Restaurants</strong> in the sidebar</li>
+                <li>Click <strong>Add Restaurant</strong> button</li>
+                <li>Fill in the restaurant name, location and cuisine type</li>
+                <li>Set the status to <strong>Active</strong></li>
+                <li>Click <strong>Save</strong> to add the restaurant</li>
+            </ol>
+        </div>
+        <!--Tutorial 2-->
+        <div class="tutorial-card">
+            <div class="tutorial-header">
+                <div class="tutorial-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h4>How to Manage Orders</h4>
+            </div>
+            <ol class="tutorial-steps">
+                <li>Click <strong>Reservations</strong> in the sidebar</li>
+                <li>View all incoming reservations in the table</li>
+                <li>Change the status to <strong>Confirmed</strong> or <strong>Cancelled</strong></li>
+                <li>Click <strong>Save Changes</strong> to update</li>
+            </ol>
+        </div>
+        <!--Tutorial 3-->
+        <div class="tutorial-card">
+            <div class="tutorial-header">
+                <div class="tutorial-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <h4>How to Update Profile</h4>
+            </div>
+            <ol class="tutorial-steps">
+                <li>Click <strong>Settings</strong> in the sidebar</li>
+                <li>Go to <strong>Account</strong> section</li>
+                <li>Click the <strong>Edit</strong> button</li>
+                <li>Update your name, email or phone number</li>
+                <li>Click <strong>Save Changes</strong> to save</li>
+            </ol>
+        </div>
+    </div>
+    <!---->

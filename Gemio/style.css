@@ -1121,3 +1121,139 @@ body{
   align-items: center;
   gap: 8px;
 }
+/* Help Content */
+.help-content {
+  padding: 24px;
+}
+/* Help Header */
+.help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+.help-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3b3020;
+}
+.help-header p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+.help-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 16px;
+  width: 280px;
+}
+.help-search i { color: #9ca3af; }
+.help-search input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  color: #3b3020;
+}
+.help-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-left: 13px;
+}
+.help-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #3b3020;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.help-section-title i {
+  color: #e07b3a;
+}
+/* FAQs */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.faq-item {
+  background: #fdf6e3;
+  border-radius: 10px;
+  padding: 16px 20px;
+  border-left: 4px solid #e07b3a;
+}
+.faq-question {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.faq-question i {
+  color: #e07b3a;
+  font-size: 15px;
+}
+.faq-question h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3b3020;
+}
+.faq-answer {
+  font-size: 13px;
+  line-height: 1.6;
+  padding-left: 25px;
+}
+/* Tutorials */
+.tutorials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-left: 13px;
+}
+.tutorial-card {
+  background: #fdf6e3;
+  border-radius: 10px;
+  padding: 16px;
+}
+.tutorial-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.tutorial-icon {
+  width: 36px;
+  height: 36px;
+  background: #e07b3a20;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e07b3a;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.tutorial-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #3b3020;
+}
+.tutorial-steps {
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tutorial-steps li {
+  font-size: 13px;
+  line-height: 1.5;
+}
