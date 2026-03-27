@@ -1124,12 +1124,14 @@ body{
 /* Help Content */
 .help-content {
   padding: 24px;
+  max-width: 900px;
 }
 /* Help Header */
 .help-header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 28px;
 }
 .help-header h2 {
@@ -1256,4 +1258,41 @@ body{
 .tutorial-steps li {
   font-size: 13px;
   line-height: 1.5;
+}
+/* How Gemio Works */
+.how-it-works {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.how-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: #fdf6e3;
+  border-radius: 10px;
+}
+.how-number {
+  width: 36px;
+  height: 36px;
+  background: #e07b3a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.how-info h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3b3020;
+  margin-bottom: 4px;
+}
+.how-info p {
+  font-size: 13px;
+  line-height: 1.6;
 }
