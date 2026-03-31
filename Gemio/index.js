@@ -1,8 +1,17 @@
-
+// If already logged in, go straight to dashboard
+if (localStorage.getItem(`isLoggedIn`) === `true`) {
+  window.location.href=`Dashboard.html`;
+}
+//wherever your log out button is in the dashboard
+function logout() {
+  localStorage.removeItem(`isLoggedIn`);
+  localStorage.removeItem(`userEmail`);
+  window.location.href=`index.html`;
+}
   const ALLOWED_EMAILS = [
     'omondijoel656@gmail.com',
-    'admin2@gemio.app',
-    'admin3@gemio.app',
+    'nben6755@gmail.com',
+    'sammsonic3@gmail.com',
     'admin4@gemio.app'
   ];
 
@@ -13,7 +22,10 @@
       showError('Please enter your email address.');
       return;
     }
-
+  //Save login state
+  localStorage.setItem(`isLoggedIn`, `true`);
+  localStorage.setItem(`userEmail`, email);
+  window.location.href=`Dashboard.html`;
     if (!ALLOWED_EMAILS.includes(email)) {
       showError('Access denied. This email is not authorized.');
       return;
