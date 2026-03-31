@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body> 
+        <div class="left-sidebar">
+            <div class="Gemio-title">
+            <img src="thumbnails/download (1).svg"
+                alt="Logo" class="logo">
+            <h1>Gemio</h1>
+        </div>
+            <h4>General</h4>
+            <div class="General-button " onclick="showSection('overview')">
+            <i class="fa-solid fa-house icon"></i>
+                <a href="index.html">
+            <button class="Overview-text">
+                Overview
+            </button>
+                </a>
+            </div>
+            <div class="General-button" onclick="showSection('restaurants')">
+            <i class="fa-solid fa-utensils icon"></i>
+                <a href="restaurants.html">
+            <button class="Restaurant-text">
+                Restaurants
+            </button>
+                </a>
+            </div>
+             <div class="General-button" onclick="showSection('reservations')">
+             <i class="fa-solid fa-calendar-check icon"></i>
+                 <button class="Reservation-text">
+                    Reservations
+                </button>
+            </div>
+            <div class="General-button" onclick="showSection('Customers')">
+            <i class="fa-solid fa-users icon"></i>
+            <button class="Customer-text">
+                Customers
+            </button>
+            </div>
+             <div class="General-button" onclick="showSection('Reports')">
+            <i class="fa-solid fa-users icon"></i>
+               <a href="reports.html">
+                <button class="Report-text">
+                    Reports
+                </button>
+               </a>
+             </div>
+            <div class="General-button" onclick="showSection('help center')">
+            <i class="fa-solid fa-credit-card icon"></i>
+               <a href="help-center.html">
+            <button class="Payment-text">
+                Help Center
+            </button>
+               </a>
+            </div>
+            <div class="General-button" onclick="showSection('settings')">
+            <i class="fa-solid fa-gear icon"></i>
+               <a href="settings.html">
+            <button class="Settings-text">
+                Settings
+            </button>
+                </a>
+            </div>
+              <div class="Add-restaurant-option">  
+            <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+            <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+            <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+            </p>
+            <button class="Add-restaurant-button">
+                Add Restaurant
+            </button>
+              </div>
+              <div class="log-out-option" onclick="logout()">
+              <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+              </div>
+        </div>
+        <div class="General-main">
+    <div class="top-bar">
+        <div class="admin-profile">
+    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
+     <div class="admin-text">
+    <p id="admin-name">Welcome back, Admin</p>
+    <p >
+        Manage restaurants, reservations, and platform activity.
+    </p>
+          </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" placeholder="Search restaurants, users, reservations...">
+        </div>
+       <i class="fa-solid fa-bell notification-icon"></i>
+       <i class="fa-regular fa-message message-icon"></i>
+       <i class="fa-solid fa-bell notification-icon"></i>
+    </div>
+    <!--USERS CONTENT-->
+    <div class="users-content">
+        <!--Page Header-->
+        <div class="section-header">
+            <div class="header-left">
+                <a href="Dashboard.html">
+                    <i class="fa-solid fa-arrow-left back-arrow"></i>
+                </a>
+                <h2>All Users</h2>
+            </div>
+            <div class="section-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search users..."
+                     oninput="searchUsers(this.value)">
+            </div>
+        </div>
+        <!--Stat Cards-->
+        <div class="rest-stats">
+            <div class="rest-stat-card">
+                <i class="fa-solid fa-users" styles="color:#3b82f6;"></i>
+                <div>
+                    <p class="stat-number">1,245</p>
+                    <p class="stat-label">Total Users</p>
+                </div>
+            </div>
+            <div class="rest-stat-card">
+                <i class="fa-solid fa-user-check" style="color:#22c55e;"></i>
+                <div>
+                    <p class="stat-number">43</p>
+                    <p class="stat-label">Active Users</p>
+                </div>
+            </div>
+            <div class="rest-stat-card">
+                <i class="fa-solid fa-user-xmark" style="color:#e11d48;"></i>
+                <div>
+                    <p class="stat-number">12</p>
+                    <p class="stat-label">Inactive Users</p>
+                </div>
+            </div>
+        </div>
+        <!--Filter-->
+        <div class="section-toolbar">
+            <select class="section-filter" onchange="filterUsers(this.value)">
+                <option value="all">All Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+        <!--Users Table-->
+        <div class="section-table-wrap">
+            <table class="section-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><i class="fa-solid fa-user"></i> Name</th>
+                        <th><i class="fa-solid fa-envelope"></i> Email</th>
+                        <th><i class="fa-solid fa-calendar"></i> Date of Sign Up</th>
+                        <th><i class="fa-solid fa-clock"></i> Last Login</th>
+                        <th><i class="fa-solid fa-circle-check"></i> Status</th>
+                    </tr>
+                </thead>
+                <tbody id="userList">
+                    <tr data-status="active">
+                        <td>1</td>
+                        <td>Brian Otieno</td>
+                        <td>brian@gmail.com</td>
+                        <td>Jan 15, 2026</td>
+                        <td>Mar 28, 2026</td>
+                        <td><span class="status confirmed">● Active</span></td>
+                    </tr>
+                    <tr data-status="active">
+                        <td>2</td>
+                        <td>Wendy Mwangi</td>
+                        <td>wendymwangi@gmail.com</td>
+                        <td>Feb 15, 2026</td>
+                        <td>Mar 28, 2026</td>
+                        <td><span class="status confirmed">● Active</span></td>
+                    </tr>
+                    <tr data-status="active">
+                        <td>3</td>
+                        <td>Samson Mworia</td>
+                        <td>Samsonmworia@gmail.com</td>
+                        <td>Feb 17, 2026</td>
+                        <td>Mar 23, 2026</td>
+                        <td><span class="status confirmed">● Active</span></td>
+                    </tr>
+                    <tr data-status="active">
+                        <td>4</td>
+                        <td>Nicholas Wanyoike</td>
+                        <td>nben6755@gmail.com</td>
+                        <td>Jan 17,2026</td>
+                        <td>Mar 30, 2026</td>
+                    </tr>
+                    <tr data-status="active">
+                        <td>5</td>
+                        <td>Ali Masoud</td>
+                        <td>Alimasoud@gmail.com</td>
+                        <td>Jan 17, 2026</td>
+                        <td>Mar 31, 2026</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
