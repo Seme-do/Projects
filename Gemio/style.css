@@ -1701,3 +1701,8 @@ body.login-body .auth-page {
   margin: 0;
   padding: 0;
 }
+/*Users*/
+.users-content {
+  padding: 24px;
+  margin-left: 13px;
+}
