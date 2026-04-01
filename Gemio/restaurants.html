@@ -151,7 +151,7 @@
         </div>
         <!--Filter-->
         <div class="section-toolbar">
-            <select class="section-filter" onchange="filterResturants(this.value)">
+            <select class="section-filter" onchange="filterRestaurants(this.value)">
                 <option value="all">All status</option>
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>
@@ -169,7 +169,7 @@
                         <th><i class="fa-solid fa-star"></i>Rating</th>
                     </tr>
                 </thead>
-                <tbody id="resturantsList">
+                <tbody id="restaurantsList">
                 <tr onclick="window.location='restaurant-detail.html?name=Flo Gardens'"
                       data-status="active">
                     <td>1</td>
@@ -187,11 +187,11 @@
                     <td>⭐ 4.5</td>
                 </tr>
                 <tr onclick="window.location='restaurant-detail.html?name=Artcaffe'"
-                      data-status="active">
+                      data-status="inactive">
                     <td>3</td>
                     <td class="rest-name-link">Artcaffe</td>
                     <td>Nairobi</td>
-                    <td><span class="status confirmed">● Active</span></td>
+                    <td><span class="status pending">● Inactive</span></td>
                     <td>⭐ 4.3</td>
                 </tr>
                 <tr onclick="window.location='restaurant-detail.html?name-Serene Gardens'"
@@ -199,7 +199,7 @@
                     <td>4</td>
                     <td class="rest-name-link">Serene Gardens</td>
                     <td>Nairobi</td>
-                    <td><span class="status pending">● Inactive</span></td>
+                    <td><span class="status confirmed">● active</span></td>
                     <td>⭐ 4.6</td>
                 </tr>
                 </tbody>
