@@ -1705,4 +1705,7 @@ body.login-body .auth-page {
 .users-content {
   padding: 24px;
   margin-left: 13px;
+  background-color: #fff8e7;
+  border-radius: 16px;
+  border: 1px solid #ccc;
 }
