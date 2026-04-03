@@ -102,7 +102,14 @@
         </div>
         <div class="search-bar">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-    <input type="text" placeholder="Search restaurants, users, reservations...">
+    <input type="text" 
+           id="globalSearch"
+           placeholder="Search restaurants, users, reservations..."
+           oninput="handleSearch(this.value)"
+           autocomplete="off">
+           <div class="search-dropdown" id="searchDropdown">
+            <!-- Search results will be dynamically inserted here -->
+           </div>
         </div>
        <i class="fa-solid fa-bell notification-icon"></i>
        <i class="fa-regular fa-message message-icon"></i>
