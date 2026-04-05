@@ -108,3 +108,147 @@ document.addEventListener("click", function(e) {
     dropdown.classList.remove("active");
   }
 });
+// ─── Notification Data (Here I will replace with the API response) ────────────────────
+const notifications = [
+  {
+    id: 1,
+    type: "user",
+    message: "New user signed up — <strong>Ali Masoud</strong>",
+    time: "2 minutes ago",
+    unread: true,
+    link: "users.html"
+  },
+  {
+    id: 2,
+    type: "restaurant",
+    message: "<strong>Brew Bistro</strong> has requested to join Gemio",
+    time: "15 minutes ago",
+    unread: true,
+    link: "restaurants.html"
+  },
+  {
+    id: 3,
+    type: "claim",
+    message: "<strong>John Doe</strong> is claiming ownership of <strong>Java House</strong>",
+    time: "40 minutes ago",
+    unread: true,
+    link: "restaurants.html"
+  },
+  {
+    id: 4,
+    type: "reservation",
+    message: "New reservation at <strong>Flo Gardens</strong> by Brian Otieno",
+    time: "1 hour ago",
+    unread: false,
+    link: "Dashboard.html"
+  },
+  {
+    id: 5,
+    type: "user",
+    message: "New user signed up — <strong>Wendy Mwangi</strong>",
+    time: "3 hours ago",
+    unread: false,
+    link: "users.html"
+  },
+  {
+    id: 6,
+    type: "reservation",
+    message: "Reservation cancelled at <strong>Serene Gardens</strong> by Joel Seme",
+    time: "Yesterday",
+    unread: false,
+    link: "Dashboard.html"
+  },
+];
+
+// ─── Icon map for notification types
+const notifIconMap = {
+  user:        { cls: "ic-user",  icon: "fa-solid fa-user" },
+  restaurant:  { cls: "ic-rest",  icon: "fa-solid fa-utensils" },
+  claim:       { cls: "ic-claim", icon: "fa-solid fa-flag" },
+  reservation: { cls: "ic-res",   icon: "fa-solid fa-calendar-check" },
+};
+
+// ─── Render Notifications 
+function renderNotifications() {
+  const list  = document.getElementById("notifList");
+  const badge = document.getElementById("notifBadge");
+  if (!list || !badge) return;
+
+  const unreadCount = notifications.filter(n => n.unread).length;
+
+  // Update badge
+  if (unreadCount > 0) {
+    badge.textContent = unreadCount;
+    badge.classList.remove("hidden");
+  } else {
+    badge.classList.add("hidden");
+  }
+
+  // Render items
+  if (notifications.length === 0) {
+    list.innerHTML = `<p class="notif-empty">No notifications yet.</p>`;
+    return;
+  }
+
+  list.innerHTML = notifications.map(n => {
+    const { cls, icon } = notifIconMap[n.type] || notifIconMap.reservation;
+    return `
+      <div class="notif-item ${n.unread ? "unread" : ""}"
+           onclick="readNotification(${n.id}); window.location='${n.link}'">
+        <div class="notif-icon ${cls}">
+          <i class="${icon}"></i>
+        </div>
+        <div class="notif-text">
+          <p class="notif-msg">${n.message}</p>
+          <p class="notif-time">${n.time}</p>
+        </div>
+        ${n.unread ? '<div class="unread-dot"></div>' : ""}
+      </div>`;
+  }).join("");
+}
+
+// ─── Toggle Dropdown 
+function toggleNotifications() {
+  const dropdown = document.getElementById("notifDropdown");
+  if (!dropdown) return;
+  dropdown.classList.toggle("active");
+
+  // Close search dropdown if open
+  const searchDropdown = document.getElementById("searchDropdown");
+  if (searchDropdown) searchDropdown.classList.remove("active");
+}
+
+// ─── Mark Single as Read ───────────────────────────────────────────
+function readNotification(id) {
+  const notif = notifications.find(n => n.id === id);
+  if (notif) notif.unread = false;
+  renderNotifications();
+}
+
+// ─── Mark All as Read ─────────────────────────────────────────────
+function markAllRead() {
+  notifications.forEach(n => n.unread = false);
+  renderNotifications();
+}
+
+// ─── Close when clicking outside ──────────────────────────────────
+document.addEventListener("click", function(e) {
+  const wrapper  = document.querySelector(".notif-wrapper");
+  const dropdown = document.getElementById("notifDropdown");
+  if (!dropdown) return;
+  if (wrapper && !wrapper.contains(e.target)) {
+    dropdown.classList.remove("active");
+  }
+});
+
+// ─── Init ──────────────────────────────────────────────────────────
+window.addEventListener("load", () => {
+  renderNotifications();
+
+  // Restore saved profile photo
+  const savedPhoto = localStorage.getItem("adminPhoto");
+  if (savedPhoto) {
+    const el = document.getElementById("admin-photo");
+    if (el) el.src = savedPhoto;
+  }
+});
