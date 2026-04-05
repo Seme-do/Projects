@@ -102,7 +102,24 @@
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
     <input type="text" placeholder="Search restaurants, users, reservations...">
         </div>
-       <i class="fa-solid fa-bell notification-icon"></i>
+        <div class="notif-wrapper">
+       <i class="fa-solid fa-bell notification-icon" onclick="toggleNotifications()"></i>
+       <span class="notif-badge" id="notifBadge">3</span>
+            <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-header">
+                    <p class="notif-title">Notifications</p>
+                    <button class="mark-all-btn" onclick="markAllRead()">
+                        Mark All as Read
+                    </button>
+                </div>
+                <div class="notif-list" id="notifList">
+                <!---Notification will appear here -->
+                </div>
+                <div class="notif-footer" onclick="window.location=`notifications.html`">
+                 View all notifications
+                </div>
+            </div>
+        </div>
        <i class="fa-regular fa-message message-icon"></i>
        <i class="fa-solid fa-bell notification-icon"></i>
     </div>
