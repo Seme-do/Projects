@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body> 
+        <div class="left-sidebar">
+            <div class="Gemio-title">
+            <img src="thumbnails/download (1).svg"
+                alt="Logo" class="logo">
+            <h1>Gemio</h1>
+        </div>
+            <h4>General</h4>
+            <div class="General-button " onclick="showSection('overview')">
+            <i class="fa-solid fa-house icon"></i>
+                <a href="index.html">
+            <button class="Overview-text">
+                Overview
+            </button>
+                </a>
+            </div>
+            <div class="General-button" onclick="showSection('restaurants')">
+            <i class="fa-solid fa-utensils icon"></i>
+                <a href="restaurants.html">
+            <button class="Restaurant-text">
+                Restaurants
+            </button>
+                </a>
+            </div>
+             <div class="General-button" onclick="showSection('reservations')">
+             <i class="fa-solid fa-calendar-check icon"></i>
+                 <button class="Reservation-text">
+                    Reservations
+                </button>
+            </div>
+            <div class="General-button" onclick="showSection('Customers')">
+            <i class="fa-solid fa-users icon"></i>
+            <button class="Customer-text">
+                Customers
+            </button>
+            </div>
+             <div class="General-button" onclick="showSection('Reports')">
+            <i class="fa-solid fa-users icon"></i>
+               <a href="reports.html">
+                <button class="Report-text">
+                    Reports
+                </button>
+               </a>
+             </div>
+            <div class="General-button" onclick="showSection('help center')">
+            <i class="fa-solid fa-credit-card icon"></i>
+               <a href="help-center.html">
+            <button class="Payment-text">
+                Help Center
+            </button>
+               </a>
+            </div>
+            <div class="General-button" onclick="showSection('settings')">
+            <i class="fa-solid fa-gear icon"></i>
+               <a href="settings.html">
+            <button class="Settings-text">
+                Settings
+            </button>
+                </a>
+            </div>
+              <div class="Add-restaurant-option">  
+            <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+            <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+            <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+            </p>
+            <button class="Add-restaurant-button">
+                Add Restaurant
+            </button>
+              </div>
+              <div class="log-out-option" onclick="logout()">
+              <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+              </div>
+        </div>
+        <div class="General-main">
+    <div class="top-bar">
+        <div class="admin-profile">
+    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
+     <div class="admin-text">
+    <p id="admin-name">Welcome back, Admin</p>
+    <p >
+        Manage restaurants, reservations, and platform activity.
+    </p>
+          </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" 
+           id="globalSearch"
+           placeholder="Search restaurants, users, reservations..."
+           oninput="handleSearch(this.value)"
+           autocomplete="off">
+           <div class="search-dropdown" id="searchDropdown">
+            <!-- Search results will be dynamically inserted here -->
+           </div>
+        </div>
+        <div class="notif-wrapper">
+            <i class="fa-solid fa-bell notification-icon" onclick="toggleNotifications()"></i>
+            <span class="notif-badge" id="notifBadge">3</span>
+            <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-header">
+                    <p class="notif-title">Notifications</p>
+                    <button class="mark-all-btn" onclick="markAllRead()">
+                        Mark All as Read
+                    </button>
+                </div>
+                <div class="notif-list" id="notifList">
+                <!---Notification will appear here -->
+                </div>
+                <div class="notif-footer" onclick="window.location=`notifications.html`">
+                 View all notifications
+                </div>
+            </div>
+        </div>
+        <div class="msg-wrapper">
+            <i class="fa-regular fa-message message-icon" onclick="toggleMessages()"></i>
+            <span class="msg-badge" id="msgBadge">4</span>
+            <div class="msg-dropdown" id="msgDropdown">
+                <div class="msg-drop-header">
+                    <p class="msg-drop-title">Messages</p>
+                    <button class="msg-mark-btn" onclick="markAllMessagesRead()">
+                     Mark all read
+                    </button>
+                </div>
+                <div class="msg-drop-list" id="msgDropList">
+                <!-- Messages texted will appear here -->
+                </div>
+                <div class="msg-drop-footer" onclick="window.location=`inbox.html`">
+                 Open full inbox
+                </div>
+            </div>
+        </div>
+       <i class="fa-solid fa-bell notification-icon"></i>
+    </div>
+    <!--INBOX CONTENT-->
+    <div class="inbox-content">
+        <div class="inbox-wrap">
+            <!--Left Panel Conversion List-->
+            <div class="inbox-left">
+                <div class="inbox-left-header">
+                    <p class="inbox-left-title">All Messages</p>
+                    <div class="inbox-search">
+                        <i class="fa-solid fa-magnifying-glass search-icon" style="font-size: 12px; color: #9ca3af;"></i>
+                        <input type="text" 
+                               placeholder="Search conversations..." 
+                               oninput="searchConversations(this.value)">
+                    </div>
+                </div>
+                <div class="conv-list" id="convList">
+                    <!-- Conversation items will be dynamically inserted here -->
+                </div>
+            </div>
+            <!--Right Panel Chat Window-->
+            <div class="inbox-right" id="inboxRight">
+                <!--Default empty state-->
+                <div class="inbox-empty" id="inboxEmpty">
+                    <i class="fa-regular fa-message" style="font-size: 40px; color: #e5e7eb;"></i>
+                    <p>Select a conversation to start messaging</p>
+                </div>
+                <!--Chat Window(Hidden until conversation is selected)-->
+                <div class="chat-window" id="chatWindow" style="display none">
+                    <div class="chat-header" id="chatHeader">
+                        <!--Injected by inbox.js-->
+                    </div>
+                    <div class="chat-body" id="chatBody">
+                        <!--Chat messages will be dynamically inserted here-->
+                    </div>
+                    <div class="chat-input-bar">
+                        <input type="text" 
+                               id="chatInput" 
+                               placeholder="Type your message..." 
+                               onkeydown="if(event.key === 'Enter')sendMessage()">
+                        <button class="send-btn" onclick="sendMessage()">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
