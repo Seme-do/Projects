@@ -389,13 +389,3 @@ document.addEventListener("click", function(e) {
     dropdown.classList.remove("active");
   }
 });
-
-// ─── Init — add renderMessages() to your existing load event ──────
-// Find your existing window.addEventListener("load") in common.js
-// and add renderMessages() inside it like this:
-//
-// window.addEventListener("load", () => {
-//   renderNotifications();
-//   renderMessages();  // ← add this line
-//   ...
-// });
