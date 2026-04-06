@@ -123,7 +123,24 @@
                 </div>
             </div>
         </div>
-       <i class="fa-regular fa-message message-icon"></i>
+        <div class="msg-wrapper">
+       <i class="fa-regular fa-message message-icon" onclick="toggleMessages()"></i>
+       <span class="msg-badge" id="msgBadge">4</span>
+            <div class="msg-dropdown" id="msgDropdown">
+                <div class="msg-dropdown-header">
+                    <p class="msg-drop-title">Messages</p>
+                    <button class="msg-mark-btn" onclick="markAllMessagesRead()">
+                     Mark all read
+                    </button>
+                </div>
+                <div class="msg-drop-list" id="msgDropList">
+                <!-- Messages texted will appear here -->
+                </div>
+                <div class="msg-drop-footer" onclick="window.location=`inbox.html`">
+                 Open full inbox
+                </div>
+            </div>
+        </div>
        <i class="fa-solid fa-bell notification-icon"></i>
     </div>
     <!--RESTAURANTS CONTENT-->
