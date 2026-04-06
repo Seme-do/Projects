@@ -1799,8 +1799,12 @@ body.login-body .auth-page {
     color: #9ca3af;
     text-align: center;
 }
-/*Notification Wrapper*/
+/*Notification Wrapper Message Wrapper*/
 .notif-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.msg-wrapper {
     position: relative;
     display: inline-block;
 }
@@ -1821,7 +1825,27 @@ body.login-body .auth-page {
     border: 2px solid #fff;
     pointer-events: none;
 }
+.msg-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #E24B4A;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    pointer-events: none;
+}
 .notif-badge.hidden {
+  display: none;
+}
+.msg-badge.hidden {
     display: none;
 }
 .notif-dropdown {
@@ -1837,10 +1861,33 @@ body.login-body .auth-page {
     z-index: 9999;
     overflow: hidden;
 }
+.msg-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 360px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    z-index: 9999;
+    overflow: hidden;
+}
 .notif-dropdown.active {
     display: block;
 }
+.msg-dropdown.active {
+    display: block;
+}
 .notif-header {
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 0.5px solid #f3f4f6;
+}
+.msg-drop-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1848,6 +1895,12 @@ body.login-body .auth-page {
     border-bottom: 0.5px solid #f3f4f6;
 }
 .notif-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+.msg-drop-title {
     font-size: 14px;
     font-weight: 600;
     color: #111827;
@@ -1861,7 +1914,18 @@ body.login-body .auth-page {
     cursor: pointer;
     font-weight: 500;
 }
+.msg-mark-btn {
+    font-size: 12px;
+    color: #f59e0b;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
 .mark-all-btn:hover {
+    color: #b45309;
+}
+.msg-mark-btn:hover{
     color: #b45309;
 }
 /* Notification Items */
@@ -1875,10 +1939,26 @@ body.login-body .auth-page {
     transition: background 0.15s;
     text-decoration: none;
 }
+.msg-drop-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 0.5px solid #f9fafb;
+    cursor: pointer;
+    transition: background 0.15s;
+    text-decoration: none;
+}
 .notif-item.unread {
     background: #fffbeb;
 }
+.msg-drop-item.unread {
+    background: #fffbeb;
+}
 .notif-item:hover {
+  background: #f9fafb;
+}
+.msg-drop-item:hover {
     background: #f9fafb;
 }
 .notif-icon {
@@ -1920,7 +2000,25 @@ body.login-body .auth-page {
     flex-shrink: 0;
     margin-top: 6px;
 }
+.msg-unread-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f59e0b;
+    flex-shrink: 0;
+    margin-top: 6px;
+}
 .notif-footer {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 13px;
+    color: #f59e0b;
+    font-weight: 500;
+    cursor: pointer;
+    border-top: 0.5px solid #f3f4f6;
+    transition: background 0.15s;
+}
+.msg-drop-footer {
     padding: 12px 16px;
     text-align: center;
     font-size: 13px;
@@ -1933,9 +2031,92 @@ body.login-body .auth-page {
 .notif-footer:hover {
     background: #fffbeb;
 }
+.msg-drop-footer:hover{
+    background: #fffbeb;
+}
 .notif-empty {
     padding: 1.5rem 16px;
     text-align: center;
     font-size: 13px;
     color: #9ca3af;
 }
+.msg-drop-empty {
+    padding: 1.5rem 16px;
+    text-align: center;
+    font-size: 13px;
+    color: #9ca3af;
+}
+.msg-drop-item:last-child {
+    border-bottom: none;
+}
+.msg-av-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+.msg-av {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+}
+.msg-av.av-customer { background: #E6F1FB; color: #0C447C; }
+.msg-av.av-owner    { background: #FAEEDA; color: #633806; }
+.msg-online-dot {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.msg-drop-preview {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+}
+.msg-drop-preview.typing {
+    color: #22c55e;
+    font-style: italic;
+}
+.msg-drop-time {
+    font-size: 11px;
+    color: #9ca3af;
+    flex-shrink: 0;
+}
+.msg-drop-badge {
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 99px;
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 3px;
+}
+.msg-drop-badge.customer { background: #E6F1FB; color: #185FA5; }
+.msg-drop-badge.owner    { background: #FAEEDA; color: #854F0B; }
+.msg-drop-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+.msg-drop-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px
+}
+.msg-drop-body {
+  flex: 1;
+  min-width: 0;
+}
+.msg-online-dot.online { background: #22c55e; }
+.msg-online-dot.offline { background: #9ca3af; }

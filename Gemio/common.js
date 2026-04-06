@@ -244,6 +244,7 @@ document.addEventListener("click", function(e) {
 // ─── Init ──────────────────────────────────────────────────────────
 window.addEventListener("load", () => {
   renderNotifications();
+  renderMessages();
 
   // Restore saved profile photo
   const savedPhoto = localStorage.getItem("adminPhoto");
@@ -252,3 +253,149 @@ window.addEventListener("load", () => {
     if (el) el.src = savedPhoto;
   }
 });
+// CODES FOR MESSAGE ICON
+// ─── Messages Data (I will replace with API later) ───────────────────────
+const messagesData = [
+  {
+    id: 1,
+    name: "Brian Otieno",
+    initials: "BO",
+    type: "customer",
+    preview: "● ● ● typing...",
+    time: "now",
+    unread: true,
+    online: true,
+    typing: true,
+    link: "inbox.html?id=1"
+  },
+  {
+    id: 2,
+    name: "Java House",
+    initials: "JH",
+    type: "owner",
+    preview: "We'd like to update our opening hours...",
+    time: "5m ago",
+    unread: true,
+    online: true,
+    typing: false,
+    link: "inbox.html?id=2"
+  },
+  {
+    id: 3,
+    name: "Wendy Mwangi",
+    initials: "WM",
+    type: "customer",
+    preview: "Hi, I need help with my reservation at...",
+    time: "20m ago",
+    unread: true,
+    online: false,
+    typing: false,
+    link: "inbox.html?id=3"
+  },
+  {
+    id: 4,
+    name: "Flo Gardens",
+    initials: "FG",
+    type: "owner",
+    preview: "Thank you for approving our listing!",
+    time: "2h ago",
+    unread: false,
+    online: false,
+    typing: false,
+    link: "inbox.html?id=4"
+  },
+];
+
+// ─── Render Message Dropdown ───────────────────────────────────────
+function renderMessages() {
+  const list  = document.getElementById("msgDropList");
+  const badge = document.getElementById("msgBadge");
+  if (!list || !badge) return;
+
+  const unreadCount = messagesData.filter(m => m.unread).length;
+
+  // Update badge
+  if (unreadCount > 0) {
+    badge.textContent = unreadCount;
+    badge.classList.remove("hidden");
+  } else {
+    badge.classList.add("hidden");
+  }
+
+  // Render items
+  if (messagesData.length === 0) {
+    list.innerHTML = `<p class="msg-drop-empty">No messages yet.</p>`;
+    return;
+  }
+
+  list.innerHTML = messagesData.map(m => `
+    <div class="msg-drop-item ${m.unread ? "unread" : ""}"
+         onclick="readMessage(${m.id}); window.location='${m.link}'">
+      <div class="msg-av-wrap">
+        <div class="msg-av ${m.type === "customer" ? "av-customer" : "av-owner"}">
+          ${m.initials}
+        </div>
+        <div class="msg-online-dot ${m.online ? "online" : "offline"}"></div>
+      </div>
+      <div class="msg-drop-body">
+        <div class="msg-drop-top">
+          <p class="msg-drop-name">${m.name}</p>
+          <span class="msg-drop-time">${m.time}</span>
+        </div>
+        <span class="msg-drop-badge ${m.type === "customer" ? "customer" : "owner"}">
+          ${m.type === "customer" ? "Customer" : "Restaurant Owner"}
+        </span>
+        <p class="msg-drop-preview ${m.typing ? "typing" : ""}">
+          ${m.preview}
+        </p>
+      </div>
+      ${m.unread ? '<div class="msg-unread-dot"></div>' : ""}
+    </div>
+  `).join("");
+}
+
+// ─── Toggle Dropdown ───────────────────────────────────────────────
+function toggleMessages() {
+  const dropdown = document.getElementById("msgDropdown");
+  if (!dropdown) return;
+  dropdown.classList.toggle("active");
+
+  // Close other dropdowns
+  const notifDropdown  = document.getElementById("notifDropdown");
+  const searchDropdown = document.getElementById("searchDropdown");
+  if (notifDropdown)  notifDropdown.classList.remove("active");
+  if (searchDropdown) searchDropdown.classList.remove("active");
+}
+
+// ─── Mark Single Message as Read ──────────────────────────────────
+function readMessage(id) {
+  const msg = messagesData.find(m => m.id === id);
+  if (msg) msg.unread = false;
+  renderMessages();
+}
+
+// ─── Mark All Messages as Read ────────────────────────────────────
+function markAllMessagesRead() {
+  messagesData.forEach(m => m.unread = false);
+  renderMessages();
+}
+
+// ─── Close when clicking outside ──────────────────────────────────
+document.addEventListener("click", function(e) {
+  const wrapper  = document.querySelector(".msg-wrapper");
+  const dropdown = document.getElementById("msgDropdown");
+  if (!dropdown) return;
+  if (wrapper && !wrapper.contains(e.target)) {
+    dropdown.classList.remove("active");
+  }
+});
+
+// ─── Init — add renderMessages() to your existing load event ──────
+// Find your existing window.addEventListener("load") in common.js
+// and add renderMessages() inside it like this:
+//
+// window.addEventListener("load", () => {
+//   renderNotifications();
+//   renderMessages();  // ← add this line
+//   ...
+// });
