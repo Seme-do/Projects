@@ -2122,9 +2122,10 @@ body.login-body .auth-page {
 .msg-online-dot.offline { background: #9ca3af; }
 /*Inbox Page*/
 .inbox-content {
-    padding: 24px;
+    padding: 0px;
     height: calc(100vh - 80px);
     margin-left: 13px;
+    background-color: #FDF8E6;
 }
 .inbox-wrap {
     display: flex;
@@ -2132,7 +2133,7 @@ body.login-body .auth-page {
     border: 1px solid #e5e7eb;
     border-radius: 14px;
     overflow: hidden;
-    background: #fff;
+    background: #Fff;
 }
 /*Left Panel*/
 .inbox-left {
