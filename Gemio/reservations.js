@@ -86,6 +86,15 @@ window.addEventListener("load", () => {
     const el = document.getElementById("admin-photo");
     if (el) el.src = savedPhoto;
   }
+  //Auto-folter from URL param
+  const params = new URLSearchParams(window.location.search);
+  const statusParam = params.get("status");
+    if (statusParam) {
+        const filterSelect = document.getElementById("statusFilter");
+        if (filterSelect) filterSelect.value = statusParam;
+        filterReservations(statusParam);
+    } else {
   renderRows(reservationsData);
   updateStats(reservationsData);
+    }
 });
