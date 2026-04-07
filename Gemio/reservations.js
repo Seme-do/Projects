@@ -89,7 +89,15 @@ window.addEventListener("load", () => {
   //Auto-folter from URL param
   const params = new URLSearchParams(window.location.search);
   const statusParam = params.get("status");
-    if (statusParam) {
+  const dateParam = params.get("date");
+  if (dateParam === "today") {
+    const today = new Date().toLocaleDateString("en-US", { 
+      month: "short", day: "numeric", year: "numeric"
+    });
+    const filtered = reservationsData.filter(r => r.date === today);
+    renderRows(filtered);
+    updateStats(filtered);
+  } else if (statusParam) {
         const filterSelect = document.getElementById("statusFilter");
         if (filterSelect) filterSelect.value = statusParam;
         filterReservations(statusParam);
