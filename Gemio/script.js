@@ -9,10 +9,35 @@ document.querySelectorAll('.three-dots-btn').forEach(btn => {
     dropdown.classList.toggle('open');
   });
 });
-
-document.addEventListener('click', () => {
+ document.addEventListener('click', () => {
   document.querySelectorAll('.dots-dropdown').forEach(d => d.classList.remove('open'));
 });
+    //Current stats data(I will replace with API data later)
+    const statsData = {
+      Daily: { restaurants: 132, reservations: 4, Users: 8, pending: 1, toprated: 3 },
+      Weekly: { restaurants: 132, reservations: 28, Users: 21, pending: 4, toprated: 15 },
+      Monthly: { restaurants: 132, reservations: 16, Users: 2400, pending: 10, toprated: 66 },
+      Yearly: { restaurants: 132, reservations: 97, Users: 30000, pending: 22, toprated: 88 },
+    };
+    //Update stats when time frame changes
+    function updateStatsCards(period) {
+      const data = statsData[period];
+      const cards = document.querySelectorAll('.stat-value');
+      cards[0].textContent = data.restaurants;
+      cards[1].textContent = data.reservations;
+      cards[2].textContent = data.Users;
+      cards[3].textContent = data.pending;
+      cards[4].textContent = data.toprated;
+    }
+//Chart Filter Dropdown
+const chartFilter = document.querySelector('.chart-filter');
+if (chartFilter) {
+  chartFilter.addEventListener('change', (e) => {
+    updateStatsCards(chartFilter.value);
+  });
+  updateStatsCards(chartFilter.value);
+}
+
     //reservationChart codes
 const ctx = document.getElementById('reservationChart').getContext('2d');
 
