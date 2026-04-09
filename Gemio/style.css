@@ -2392,3 +2392,16 @@ body.login-body .auth-page {
     transition: background 0.15s;
 }
 .send-btn:hover { background: #d97706; }
+.view-all-btn {
+  text-decoration: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #e5a800;
+  color: #e5a800;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+.view-all-btn:hover {
+  background-color: #e5a800;
+  color: #fff;
+}
