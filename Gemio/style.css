@@ -634,6 +634,9 @@ body{
 /*Toolbar*/
 .section-toolbar {
   margin-bottom: 16px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 .section-filter {
   background: white;

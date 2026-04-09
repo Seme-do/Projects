@@ -1,4 +1,4 @@
-// ─── Reservations Data (replace with API later) ────────────────────
+// ─── Reservations Data (I will replace with API later) ────────────────────
 const reservationsData = [
   { id: 1,  customer: "Brian Otieno",     restaurant: "Flo Gardens",    date: "Jan 15, 2026", guests: 3, status: "confirmed"  },
   { id: 2,  customer: "Wendy Mwangi",     restaurant: "Java House",     date: "Feb 10, 2026", guests: 2, status: "confirmed"  },
@@ -56,14 +56,48 @@ function updateStats(data) {
   document.getElementById("pendingCount").textContent   = data.filter(r => r.status === "pending").length;
   document.getElementById("cancelledCount").textContent = data.filter(r => r.status === "cancelled").length;
 }
-
+//Get Activw Filters
+function getFilteredData() {
+  const status = document.getElementById("statusFilter").value;
+  const time = document.getElementById("timeFilter").value;
+  const now = new Date();
+  let data = reservationsData;
+//Apply time filter
+  if (time === "all") {
+    data = data.filter(r => {
+      const rDate = new Date(r.date);
+      if (time === "today") {
+        return rDate.toDateString() === now.toDateString();
+        } else if (time === "week") {
+          const startOfWeek = new Date(now);
+          startOfWeek.setDate(now.getDate() - now.getDay());
+          startOfWeek.setHours(0, 0, 0, 0);
+          return rDate >= startOfWeek && rDate <= now;
+        } else if (time === "month") {
+          return rDate.getMonth() === now.getMonth() &&
+                 rDate.getFullYear() === now.getFullYear();
+        } else if (time === "year") {
+          return rDate.getFullYear() === now.getFullYear();
+        }
+    });
+  }
+  //Apply status filter
+  if (status !== "all") {
+    data = data.filter(r => r.status === status);
+  }
+  return data;
+} 
 // ─── Filter by Status ──────────────────────────────────────────────
 function filterReservations(value) {
-  const filtered = value === "all"
-    ? reservationsData
-    : reservationsData.filter(r => r.status === value);
-  renderRows(filtered);
-  updateStats(filtered);
+  const data = getFilteredData()
+  renderRows(data);
+  updateStats(data);
+}
+//Filter by Time
+function filterByTime(value) {
+  const data = getFilteredData();
+  renderRows(data);
+  updateStats(data);
 }
 
 // ─── Search ────────────────────────────────────────────────────────
@@ -86,7 +120,7 @@ window.addEventListener("load", () => {
     const el = document.getElementById("admin-photo");
     if (el) el.src = savedPhoto;
   }
-  //Auto-folter from URL param
+  //Auto-filter from URL param
   const params = new URLSearchParams(window.location.search);
   const statusParam = params.get("status");
   const dateParam = params.get("date");
