@@ -328,6 +328,7 @@ body{
   font-size: 18px;
   font-weight: 600;
 }
+.reservation-filter,
 .chart-filter{
     color: #555;
     border: 1px solid #ccc;
