@@ -31,4 +31,12 @@ window.addEventListener('load', () => {
   if (savedPhoto) {
     document.getElementById('admin-photo').src = savedPhoto;
   }
+//Auto-filter from URL param
+const params = new URLSearchParams(window.location.search);
+const statusParam = params.get('status');
+if (statusParam) {
+  const filterSelect = document.getElementById('statusFilter');
+  if (filterSelect) filterSelect.value = statusParam;
+  filterUsers(statusParam);
+}
 });
