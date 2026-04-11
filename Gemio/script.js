@@ -220,3 +220,15 @@ new Chart(donutCtx, {
     }
   }
 });
+// ─── Mobile View(Profile Dropdown)
+function toggleMobileProfile() {
+  const dropdown = document.getElementById('mobileProfileDropdown');
+  dropdown.classList.toggle('open');
+}
+
+document.addEventListener('click', (e) => {
+  const dropdown = document.getElementById('mobileProfileDropdown');
+  if (dropdown && !e.target.closest('.mobile-icon-wrap') && !e.target.closest('.mobile-profile-dropdown')) {
+    dropdown.classList.remove('open');
+  }
+});
