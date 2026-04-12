@@ -2609,3 +2609,44 @@ body.login-body .auth-page {
     position: relative;
   }
 }
+/*Mobile option for Recent Reservations
+Stacks the table and top restaurants vertically on mobile
+makes the reservations table horizontally scrollable so columns are not squished
+Makes top restaurants full width below the table*/
+@media (max-width: 768px) {
+  .bottom-section {
+    flex-direction: column;
+    padding: 0 8px;
+    gap: 12px;
+  }
+  .recent-reservations {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+  .reservations-table {
+    min-width: 500px;
+  }
+  .top-restaurants {
+    width: 100%;
+    min-width: unset;
+    box-sizing: border-box;
+  }
+}
+/*This forces everything inside .General-main to stack vertically and
+ prevents horizontal overflow on mobile.*/
+@media (max-width: 768px) {
+  .General-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0 !important;
+    overflow-x: hidden;
+  }
+   body {
+    overflow-x: hidden;
+    display: block !important;
+  }
+}
