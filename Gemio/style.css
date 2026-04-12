@@ -420,6 +420,30 @@ body{
   width: 100% !important;
   height: 100% !important; 
 }
+/*Chart Legend and also Reservation Donut Applies in mobile option only*/
+@media (max-width: 768px) {
+  .charts-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0 8px;
+  }
+  .chart-container {
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+    margin-top: 0;
+    box-sizing: border-box;
+  }
+   .reservation-donut {
+    width: 100%;
+    margin-left: 0;
+    box-sizing: border-box;
+  }
+  #reservationChart {
+    max-height: 200px;
+  }
+}
 /*Recent-reservation*/
 .recent-reservations {
   background: #FDF8E6;
