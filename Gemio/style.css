@@ -2648,5 +2648,53 @@ Makes top restaurants full width below the table*/
    body {
     overflow-x: hidden;
     display: block !important;
+    overflow-x: hidden;
+  }
+  .reservation-donut {
+    min-width: unset;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 13px;
+  }
+  .donut-body {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between !important;
+    min-height: 120px;
+    gap: 12px;
+  }
+  .donut-chart-wrap {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+   .donut-legend {
+    gap: 6px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+  }
+  .legend-item p {
+    font-size: 12px;
+  }
+  #donutChart {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  .donut-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .donut-percent {
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .donut-label {
+    font-size: 9px;
   }
 }
