@@ -237,6 +237,7 @@ body{
 .message-icon:hover {
     background-color: #e0e0e0;
 }
+/*Current stats(visible in desktop)*/
 .current-stats{
     background-color: #FDF8E6;
     border: 1px solid #ccc;
@@ -352,6 +353,34 @@ body{
 }
 .dots-dropdown.open{
     display: block;
+}
+/*Current stats Applies in mobile*/
+@media (max-width: 768px) {
+  .current-stats {
+    height: auto;
+    margin: 12px 8px;
+    padding: 12px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .each-stats {
+    margin-right: 0;
+    padding: 14px;
+    width: auto;
+  }
+  .stats-icon {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  .stat-value {
+    font-size: 20px;
+  }
+  .stat-label {
+    font-size: 11px;
+  }
 }
 /* chart-container */
 .chart-container {
