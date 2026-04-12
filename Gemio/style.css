@@ -3,6 +3,7 @@ body{
     background-color: white;
     display: flex;
 }
+/*Desktop-sidebar*/
 .Gemio-title {
     display: flex;
     align-items: center;
@@ -111,6 +112,54 @@ body{
     margin-top: 20px;
     padding: 10px;
     cursor: pointer;
+}
+/*Mobile-sidebar*/
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+.sidebar-overlay.open {
+  display: block;
+}
+@media (max-width: 768px) {
+  .left-sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 75%;
+    height: 100%;
+    z-index: 1001;
+    transition: left 0.3s ease;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+  }
+  .left-sidebar.open {
+    left: 0;
+  }
+   .General-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+  .sb-close-btn {
+    display: flex;
+  }
+}
+.sb-close-btn {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #7c6f5b;
+  cursor: pointer;
+  margin-bottom: 8px;
+  width: 100%;
 }
 .top-bar {
     display: flex;

@@ -232,3 +232,10 @@ document.addEventListener('click', (e) => {
     dropdown.classList.remove('open');
   }
 });
+// ─── Mobile Sidebar Toggle ─────────────────────────────────
+function toggleSidebar() {
+  const sidebar = document.getElementById('leftSidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+}
