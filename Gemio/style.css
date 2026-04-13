@@ -127,6 +127,18 @@ body{
 .sidebar-overlay.open {
   display: block;
 }
+.sb-close-btn {
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #7c6f5b;
+  cursor: pointer;
+  margin-bottom: 8px;
+  width: 100%;
+}
 @media (max-width: 768px) {
   .left-sidebar {
     position: fixed;
@@ -147,19 +159,11 @@ body{
   }
   .sb-close-btn {
     display: flex;
+    margin-left: auto;
   }
-}
-.sb-close-btn {
-  display: none;
-  align-items: center;
-  justify-content: flex-end;
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #7c6f5b;
-  cursor: pointer;
-  margin-bottom: 8px;
-  width: 100%;
+  .Gemio-title h1 {
+    flex: 1;
+  }
 }
 .top-bar {
     display: flex;
@@ -1776,7 +1780,8 @@ label {
   justify-content: center;
   background-color: #f3f4f6;
   position: fixed;
-  top: o;
+  width: 100vw;
+  top: 0;
   left: 0;
 }
 .auth-card {
@@ -2696,5 +2701,27 @@ Makes top restaurants full width below the table*/
   }
   .donut-label {
     font-size: 9px;
+  }
+  /*LOGIN PAGE MOBILE ADJUSTMENTS*/
+  .auth-page {
+    width: 100vw;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+  .auth-card {
+    padding: 28px 20px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+    margin: auto;
+  }
+  .auth-footer {
+    font-size: 12px;
+  }
+  body.login-body {
+    display: flex;
+    align-items: center;
+    height: 100vh;
   }
 }
