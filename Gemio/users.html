@@ -13,6 +13,10 @@
             <img src="thumbnails/download (1).svg"
                 alt="Logo" class="logo">
             <h1>Gemio</h1>
+            <!--Close button(Visible in mobile but invisible on desktop)-->
+            <button class="sb-close-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
             <h4>General</h4>
             <div class="General-button " onclick="showSection('overview')">
@@ -91,7 +95,12 @@
         </div>
         <div class="General-main">
     <div class="top-bar">
-        <div class="admin-profile">
+        <!--Mobile hamburger(hidden on desktop but visible on mobile)-->
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <!--Admin Profile (Visible on desktop but hidden on mobile)-->
+        <div class="admin-profile desktop-only">
     <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
          alt="profile Image"
          class="admin-photo"
@@ -104,11 +113,38 @@
           </div>
           <input type="file" id="photo-upload" accept="image/*" style="display: none;">
         </div>
-        <div class="search-bar">
+        <!--Search Bar(hidden on mobile but visible on desktop)-->
+        <div class="search-bar desktop-only">
         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-    <input type="text" placeholder="Search restaurants, users, reservations...">
+    <input type="text" 
+           placeholder="Search restaurants, users, reservations..."
+           oninput="handleSearchInput(this.value)"
+           autocomplete="off">
+           <div class="search-dropdown" id="searchDropdown">
+            <!-- Search results will appear here -->
+           </div>
         </div>
-        <div class="notif-wrapper">
+        <!--Mobile logo(hidden on desktop but visible on mobile)-->
+        <span class="mobile-logo">Gemio</span>
+        <!--Mobile right icons(hidden on desktop but visible on mobile)-->
+        <div class="mobile-icons">
+            <div class="mobile-icons-wrap" onclick="window.location=`inbox.html`">
+                <i class="fa-regular fa-message message-icon"></i>
+                <span class="msg-badge" id="mobileMsgBadge">4</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleNotifications()">
+                <i class="fa-solid fa-bell notification-icon"></i>
+                <span class="notif-badge" id="mobileNotifBadge">3</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleMobileProfile()">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                     alt="profile Image"
+                     class="mobile-admin-photo"
+                     id="MobileAdminPhoto">
+            </div>
+        </div>
+        <!--Desktop Notifications but invisible on mobile-->
+        <div class="notif-wrapper desktop-only">
        <i class="fa-solid fa-bell notification-icon" onclick="toggleNotifications()"></i>
        <span class="notif-badge" id="notifBadge">3</span>
             <div class="notif-dropdown" id="notifDropdown">
@@ -126,7 +162,8 @@
                 </div>
             </div>
         </div>
-        <div class="msg-wrapper">
+        <!--Desktop Messages but invisible on mobile-->
+        <div class="msg-wrapper desktop-only">
         <i class="fa-regular fa-message message-icon" onclick="toggleMessages()"></i>
         <span class="msg-badge" id="msgBadge">4</span>
             <div class="msg-dropdown" id="msgDropdown">
@@ -144,7 +181,18 @@
                 </div>
             </div>
         </div>
-        <i class="fa-solid fa-bell notification-icon"></i>
+        <!--Mobile Profile Dropdown but invisible on desktop-->
+        <div class="mobile-profile-dropdown" id="mobileProfileDropdown">
+            <div class="mob-profile-info">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                     alt="profile Image"
+                     class="mobile-profile-photo"
+                     id="mobileProfilePhoto">
+                <span id="mobProfileName">Admin</span>
+            </div>
+               <a href="settings.html">Settings</a>
+               <a href="#" onclick="handleLogout()">Logout</a>
+        </div>
     </div>
     <!--USERS CONTENT-->
     <div class="users-content">
