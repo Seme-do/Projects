@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemio - Restaurants</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body>
+        <div class="left-sidebar" id="leftSidebar">
+            <div class="Gemio-title">
+                <img src="thumbnails/download (1).svg" alt="Logo" class="logo">
+                <h1>Gemio</h1>
+            <!--Close button(Visible in mobile but invisible on desktop)-->
+                <button class="sb-close-btn" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <h4>General</h4>
+            <div class="General-button">
+                <i class="fa-solid fa-house icon"></i>
+                <a href="Dashboard.html">
+                <button class="Overview-text">
+                    Overview
+                </button>
+                </a>
+            </div>
+            <div class="General-button">
+                <i class="fa-solid fa-utensils icon"></i>
+                   <a href="restaurants.html">
+                <button class="Restaurant-text">
+                    Restaurants
+                </button>
+                   </a>
+            </div>
+             <div class="General-button">
+                <i class="fa-solid fa-calendar-check icon"></i>
+                   <a href="reservations.html">
+                <button class="Reservation-text" >
+                    Reservations
+                </button>
+                   </a>
+            </div>
+            <div class="General-button">
+                <i class="fa-solid fa-users icon"></i>
+                   <a href="users.html">
+                <button class="Customer-text">
+                    Users
+                </button>
+                   </a>
+            </div>
+            <div class="General-button">
+                <i class="fa-solid fa-users icon"></i>
+                   <a href="reports.html">
+                <button class="Report-text">
+                    Reports
+                </button>
+                   </a>
+            </div>
+            <div class="General-button">
+                <i class="fa-solid fa-credit-card icon"></i>
+                   <a href="help-center.html">
+                <button class="Payment-text">
+                    Help Center
+                </button>
+                   </a>
+            </div>
+            <div class="General-button">
+                <i class="fa-solid fa-gear icon"></i>
+                   <a href="settings.html">
+                <button class="Settings-text">
+                    Settings
+                </button>
+                   </a>
+            </div>
+            <div class="Add-restaurant-option">  
+                <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+                <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+                <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+                </p>
+                <button class="Add-restaurant-button">
+                Add Restaurant
+                </button>
+            </div>
+            <div class="log-out-option" onclick="logout()">
+                <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+            </div>
+        </div>
+    <div class="General-main">
+        <div class="top-bar">
+            <!--Mobile hamburger(hidden on desktop but visible on mobile)-->
+            <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <!--Admin profile(Hidden on mobile btw visible on desktop)-->
+        <div class="admin-profile desktop-only">
+            <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                 alt="profile Image"
+                 class="admin-photo"
+                 id="admin-photo">
+        <div class="admin-text">
+            <p id="admin-name">Welcome back, Admin</p>
+            <p>
+               Manage restaurants, reservations, and platform activity.
+            </p>
+        </div>
+            <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <!--Search bar(hidden on mobile but visible on desktop)-->
+        <div class="search-bar desktop-only">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" 
+                   placeholder="Search restaurants, users, reservations..."
+                   oninput="handleSearchInput(this.value)"
+                   autocomplete="off">
+            <div class="search-dropdown" id="searchDropdown">
+                <!--Search results will appear here-->
+            </div>
+        </div>
+        <!--Mobile logo(hidden on desktop but visible on mobile)-->
+        <span class="mobile-logo">Gemio</span>
+        <!--Mobile right icons(hidden on desktop but visible on mobile)-->
+        <div class="mobile-icons">
+            <div class="mobile-icon-wrap" onclick="window.location=`inbox.html`">
+                <i class="fa-regular fa-message message-icon"></i>
+                <span class="msg-badge" id="mobileMsgBadge">4</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleNotifications()">
+                <i class="fa-solid fa-bell notification-icon"></i>
+                <span class="notif-badge" id="mobileNotifBadge">3</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleMobileProfile()">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                        alt="profile Image"
+                        class="mobile-admin-photo"
+                        id="MobileAdminPhoto">
+            </div>
+        </div>
+        <!--Desktop Notifications but invisible on mobile-->
+        <div class="notif-wrapper desktop-only">
+            <i class="fa-solid fa-bell notification-icon" onclick="toggleNotifications()"></i>
+            <span class="notif-badge" id="notifBadge">3</span>
+            <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-header">
+                    <p class="notif-title">Notifications</p>
+                    <button class="mark-all-btn" onclick="markAllRead()">
+                        Mark All as Read
+                    </button>
+                </div>
+                <div class="notif-list" id="notifList">
+                <!---Notification will appear here -->
+                </div>
+                <div class="notif-footer" onclick="window.location=`notifications.html`">
+                 View all notifications
+                </div>
+            </div>
+        </div>
+        <!--Desktop Messages but invisible on mobile-->
+        <div class="msg-wrapper desktop-only">
+       <i class="fa-regular fa-message message-icon" onclick="toggleMessages()"></i>
+       <span class="msg-badge" id="msgBadge">4</span>
+            <div class="msg-dropdown" id="msgDropdown">
+                <div class="msg-dropdown-header">
+                    <p class="msg-drop-title">Messages</p>
+                    <button class="msg-mark-btn" onclick="markAllMessagesRead()">
+                     Mark all read
+                    </button>
+                </div>
+                <div class="msg-drop-list" id="msgDropList">
+                <!-- Messages texted will appear here -->
+                </div>
+                <div class="msg-drop-footer" onclick="window.location=`inbox.html`">
+                 Open full inbox
+                </div>
+            </div>
+        </div>
+        <!--Mobile Profile Droprdown but invisible on desktop-->
+        <div class="mobile-profile-dropdown" id="mobileProfileDropdown">
+            <div class="mob-profile-info">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                        alt="profile Image"
+                        class="mob-profile-photo"
+                        id="mobProfilePhoto">
+                <span id="mobProfileName">Admin</span>
+            </div>
+                <a href="settings.html">Settings</a>
+                <a href="#" onclick="handleLogout()">Logout</a>
+            </div>
+        </div>
+    <!--RESTAURANTS CONTENT-->
+    <div class="restaurants-content">
+        <!--Header-->
+        <div class="section-header">
+            <div class="header-left">
+                <a href="Dashboard.html">
+                    <i class="fa-solid fa-arrow-left back-arrow"></i>
+                </a>
+                <h2>All Restaurants</h2>
+            </div>
+            <div class="section-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search restaurants..."
+                    oninput="searchRestaurants(this.value)">
+            </div>
+        </div>
+        <!--Stats Row-->
+        <div class="rest-stats">
+            <div class="rest-stat-card">
+                <i class="fa-solid fa-utensils"></i>
+                <div>
+                    <p class="stat-number">132</p>
+                    <p class="stat-label">Total Restaurants</p>
+                </div>
+            </div>
+        <div class="rest-stat-card">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+                <p class="stat-number">110</p>
+                <p class="stat-label">Active</p>
+            </div>
+        </div>
+        <div class="rest-stat-card">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <div>
+                <p class="stat-number">22</p>
+                <p class="stat-label">Inactive</p>
+            </div>
+          </div>
+        </div>
+        <!--Filter-->
+        <div class="section-toolbar">
+            <select class="section-filter" onchange="filterRestaurants(this.value)">
+                <option value="all">All status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+        <!--Table-->
+        <div class="section-table-wrap">
+            <table class="section-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><i class="fa-solid fa-utensils"></i>Restaurant Name</th>
+                        <th><i class="fa-solid fa-location-dot"></i>Location</th>
+                        <th><i class="fa-solid fa-circle-check"></i>Status</th>
+                        <th><i class="fa-solid fa-star"></i>Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="restaurantsList">
+                <tr onclick="window.location='restaurant-detail.html?name=Flo Gardens'"
+                      data-status="active">
+                    <td>1</td>
+                    <td class="rest-name-link">Flo Gardens</td>
+                    <td>Nairobi</td>
+                    <td><span class="status confirmed">● Active</span></td>
+                    <td>⭐ 4.8</td>
+                </tr>
+                <tr onclick="window.location='restaurant-detail.html?name=Java House'"
+                      data-status="active">
+                    <td>2</td>
+                    <td class="rest-name-link">Java House</td>
+                    <td>Nairobi</td>
+                    <td><span class="status confirmed">● Active</span></td>
+                    <td>⭐ 4.5</td>
+                </tr>
+                <tr onclick="window.location='restaurant-detail.html?name=Artcaffe'"
+                      data-status="inactive">
+                    <td>3</td>
+                    <td class="rest-name-link">Artcaffe</td>
+                    <td>Nairobi</td>
+                    <td><span class="status pending">● Inactive</span></td>
+                    <td>⭐ 4.3</td>
+                </tr>
+                <tr onclick="window.location='restaurant-detail.html?name=Serene Gardens'"
+                      data-status="active">
+                    <td>4</td>
+                    <td class="rest-name-link">Serene Gardens</td>
+                    <td>Nairobi</td>
+                    <td><span class="status confirmed">● active</span></td>
+                    <td>⭐ 4.6</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<script src="common.js"></script>
+<script src="restaurants.js"></script>
+    </body>
+</html>

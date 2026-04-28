@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body> 
+        <div class="left-sidebar" id="leftSidebar">
+            <div class="Gemio-title">
+            <img src="thumbnails/download (1).svg" alt="Logo" class="logo">
+            <h1>Gemio</h1>
+            <!--Close button(Visible on mobile but hidden on desktop)-->
+            <button class="sb-close-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+            <h4>General</h4>
+            <div class="General-button " onclick="showSection('overview')">
+            <i class="fa-solid fa-house icon"></i>
+                <a href="Dashboard.html">
+            <button class="Overview-text">
+                Overview
+            </button>
+                </a>
+            </div>
+            <div class="General-button" onclick="showSection('restaurants')">
+            <i class="fa-solid fa-utensils icon"></i>
+                <a href="restaurants.html">
+            <button class="Restaurant-text">
+                Restaurants
+            </button>
+                </a>
+            </div>
+             <div class="General-button" onclick="showSection('reservations')">
+             <i class="fa-solid fa-calendar-check icon"></i>
+                 <button class="Reservation-text">
+                    Reservations
+                </button>
+            </div>
+            <div class="General-button" onclick="showSection('Customers')">
+            <i class="fa-solid fa-users icon"></i>
+            <a href="users.html">
+            <button class="Customer-text">
+                Users
+            </button>
+            </a>
+            </div>
+             <div class="General-button" onclick="showSection('Reports')">
+            <i class="fa-solid fa-users icon"></i>
+               <a href="reports.html">
+                <button class="Report-text">
+                    Reports
+                </button>
+               </a>
+             </div>
+            <div class="General-button" onclick="showSection('help center')">
+            <i class="fa-solid fa-credit-card icon"></i>
+               <a href="help-center.html">
+            <button class="Payment-text">
+                Help Center
+            </button>
+               </a>
+            </div>
+            <div class="General-button" onclick="showSection('settings')">
+            <i class="fa-solid fa-gear icon"></i>
+               <a href="settings.html">
+            <button class="Settings-text">
+                Settings
+            </button>
+                </a>
+            </div>
+              <div class="Add-restaurant-option">  
+            <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+            <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+            <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+            </p>
+            <button class="Add-restaurant-button">
+                Add Restaurant
+            </button>
+              </div>
+              <div class="log-out-option" onclick="logout()">
+              <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+              </div>
+        </div>
+        <div class="General-main">
+    <div class="top-bar">
+        <!--Mobile hamburger(hidden on desktop but visible on mobile)-->
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <!--Admin Profile(hidden on mobile but visible on desktop)-->
+        <div class="admin-profile desktop-only">
+    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
+     <div class="admin-text">
+    <p id="admin-name">Welcome back, Admin</p>
+    <p >
+        Manage restaurants, reservations, and platform activity.
+    </p>
+        </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <!--Search bar(hidden on mobile but visible on desktop)-->
+        <div class="search-bar desktop-only">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" 
+           placeholder="Search restaurants, users, reservations..."
+           oninput="handleSearchInput(this.value)"
+           autocomplete="off">
+           <div class="search-dropdown" id="searchDropdown">
+            <!-- Search results will appear here -->
+           </div>
+        </div>
+        <!--Mobile logo(hidden on desktop but visible on mobile)-->
+        <span class="mobile-logo">Gemio</span>
+        <!--Mobile right icons(hidden on desktop but visible on mobile)-->
+        <div class="mobile-icons">
+            <div class="mobile-icon-wrap" onclick="window.location=`inbox.html`">
+                <i class="fa-regular fa-message message-icon"></i>
+                <span class="msg-badge" id="mobileMsgBadge">4</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleNotifications()">
+                <i class="fa-solid fa-bell notification-icon"></i>
+                <span class="notif-badge" id="mobileNotifBadge">3</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleMobileProfile()">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                     alt="profile Image"
+                     class="mobile-admin-photo"
+                     id="MobileAdminPhoto">
+            </div>
+        </div>
+        <!--Desktop Notifications but invisible on mobile-->
+        <div class="notif-wrapper desktop-only">
+       <i class="fa-solid fa-bell notification-icon" onclick="toggleNotifications()"></i>
+       <span class="notif-badge" id="notifBadge">3</span>
+            <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-header">
+                    <p class="notif-title">Notifications</p>
+                    <button class="mark-all-btn" onclick="markAllRead()">
+                        Mark All as Read
+                    </button>
+                </div>
+                <div class="notif-list" id="notifList">
+                <!---Notification will appear here -->
+                </div>
+                <div class="notif-footer" onclick="window.location=`notifications.html`">
+                 View all notifications
+                </div>
+            </div>
+        </div>
+        <!--Desktop Messages but invisible on mobile-->
+        <div class="msg-wrapper desktop-only">
+       <i class="fa-regular fa-message message-icon" onclick="toggleMessages()"></i>
+       <span class="msg-badge" id="msgBadge">4</span>
+            <div class="msg-dropdown" id="msgDropdown">
+                <div class="msg-dropdown-header">
+                    <p class="msg-drop-title">Messages</p>
+                    <button class="msg-mark-btn" onclick="markAllMessagesRead()">
+                     Mark all read
+                    </button>
+                </div>
+                <div class="msg-drop-list" id="msgDropList">
+                <!-- Messages texted will appear here -->
+                </div>
+                <div class="msg-drop-footer" onclick="window.location=`inbox.html`">
+                 Open full inbox
+                </div>
+            </div>
+        </div>
+        <!--Mobile Profile Dropdown but invisible on desktop-->
+        <div class="mobile-profile-dropdown" id="mobileProfileDropdown">
+            <div class="mob-profile-info">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                        alt="profile Image"
+                        class="mob-profile-photo"
+                        id="mobProfilePhoto">
+                <span id="mobProfileName">Admin</span>
+            </div>
+               <a href="settings.html">Settings</a>
+               <a href="#" onclick="handleLogout()">Logout</a>
+        </div>
+    </div>
+    <!--REPORTS CONTENT-->
+    <div class="reports-content">
+        <!--Page Header-->
+        <div class="reports-header">
+            <div>
+                <h2>Reports</h2>
+                <p>Track platform performance and export data</p>
+            </div>
+            <div class="period-filter">
+                <button class="period-btn active" onclick="setPeriod(`weekly`, this)">
+                    Weekly
+                </button>
+                <button class="period-btn" onclick="setPeriod(`monthly`, this)">
+                    Monthly
+                </button>
+                <button class="period-btn" onclick="setPeriod(`Yearly`, this)">
+                    Yearly
+                </button>
+            </div>
+        </div>
+        <!--Platform Health-->
+        <div class="report-section">
+            <h3 class="report-section-title">
+                <i class="fa-solid fa-heart-pulse"></i>
+                Platform Health
+            </h3>
+            <!--Stat Cards-->
+            <div class="report-cards">
+                <div class="report-card">
+                    <div class="report-card-icon" style="background:#a855f720;">
+                        <i class="fa-solid fa-calendar-check" style="color: #a855f7;"></i>
+                    </div>
+                    <div>
+                        <p class="report-card-number">3,842</p>
+                        <p class="report-card-label">Total Reservations</p>
+                    </div>
+                </div>
+                <div class="report-card">
+                    <div class="report-card-icon" style="background: #22c55e20;">
+                        <i class="fa-solid fa-money-bill" style="color: #22c55e;"></i>
+                    </div>
+                    <div>
+                        <p class="report-card-number">KES 284K</p>
+                        <p class="report-card-label">Revenue</p>
+                    </div>
+                </div>
+                <div class="report-card">
+                    <div class="report-card-icon" style="background: #3b82f620;">
+                        <i class="fa-solid fa-server" style="color: #3b82f6;"></i>
+                    </div>
+                    <div>
+                        <p class="report-card-number">99.9%</p>
+                        <p class="report-card-label">Uptime</p>
+                    </div>
+                </div>
+                <div class="report-card">
+                    <div class="report-card-icon" style="background: #f59e0b20;">
+                        <i class="fa-solid fa-clock" style="color: #f59e0b;"></i>
+                    </div>
+                    <div>
+                        <p class="report-card-number">1.2s</p>
+                        <p class="report-card-label">Avg Response</p>
+                    </div>
+                </div>
+            </div>
+            <!--System Status-->
+            <h4 class="sub-section-title">
+                <i class="fa-solid fa-server"></i>
+                System Status
+            </h4>
+            <div class="system-status">
+                <div class="status-item">
+                    <span class="status-dot green"></span>
+                    <p>API Server</p>
+                    <span class="status-label">Operational</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-dot green"></span>
+                    <p>Database</p>
+                    <span class="status-label">Operational</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-dot green"></span>
+                    <p>Payment Gateway</p>
+                    <span class="status-label">Operational</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-dot yellow"></span>
+                    <p>Email Service</p>
+                    <span class="status-label">Degraded</span>
+                </div>
+            </div>
+            <!--Complaints/Flagged Restaurants-->
+            <h4 class="sub-section-title" style="margin-top: 24px;">
+                <i class="fa-solid fa-flag"></i>
+                Complaints/Flagged Restaurants
+            </h4>
+            <div class="section-table-wrap" style="margin-top: 12px;">
+                <table class="section-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><i class="fa-solid fa-utensils"></i> Restaurant</th>
+                            <th><i class="fa-solid fa-flag"></i> Reason</th>
+                            <th><i class="fa-solid fa-calendar"></i> Date</th>
+                            <th><i class="fa-solid fa-gear"></i> Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Serene Gardens</td>
+                            <td>Poor customer service</td>
+                            <td>12-03-2026</td>
+                            <td class="action-btns">
+                                <button class="resolve-btn" onclick="resolveFlag(this)">
+                                    <i class="fa-solid fa-check"></i>
+                                    Resolve
+                                </button>
+                                <button class="suspend-btn" onclick="suspendRestaurant(this)">
+                                    <i class="fa-solid fa-ban"></i>
+                                    Suspend
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Java House</td>
+                            <td>Food quality complaint</td>
+                            <td>14-03-2026</td>
+                            <td class="action-btns">
+                                <button class="resolve-btn" onclick="resolveFlag(this)">
+                                    <i class="fa-solid fa-check"></i>
+                                    Resolve
+                                </button>
+                                <button class="suspend-btn" onclick="suspendRestaurant(this)">
+                                    <i class="fa-solid fa-ban"></i>
+                                    Suspend
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Artcaffe</td>
+                            <td>Incorrect pricing</td>
+                            <td>15-03-2026</td>
+                            <td class="action-btns">
+                                <button class="resolve-btn" onclick="resolveFlag(this)">
+                                    <i class="fa-solid fa-check"></i>
+                                    Resolve
+                                </button>
+                                <button class="suspend-btn" onclick="suspendRestaurant(this)">
+                                    <i class="fa-solid fa-ban"></i>
+                                    Suspend
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Export Data-->
+        <div class="report-section">
+            <h3 class="report-section-title">
+                <i class="fa-solid fa-download"></i>
+                Export Data
+            </h3>
+            <p class="export-desc">
+                Download reports in your preferred format
+            </p>
+            <div class="export-options">
+                <div class="export-card">
+                    <i class="fa-solid fa-file-csv"></i>
+                    <div>
+                        <p class="export-title">Export as CSV</p>
+                        <p class="export-subtitle">Best for spreadsheets</p>
+                    </div>
+                    <button class="export-btn" onclick="exportData(`csv`)">
+                        <i class="fa-solid fa-download"></i>
+                        Download
+                    </button>
+                </div>
+                <div class="export-card">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <div>
+                        <p class="export-title">Export as PDF</p>
+                        <p class="export-subtitle">Best for printing</p>
+                    </div>
+                    <button class="export-btn" onclick="exportData(`pdf`)">
+                        <i class="fa-solid fa-download"></i>
+                        Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <script src="reports.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>

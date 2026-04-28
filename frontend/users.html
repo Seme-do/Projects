@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body> 
+        <div class="left-sidebar" id="leftSidebar">
+            <div class="Gemio-title">
+            <img src="thumbnails/download (1).svg"
+                alt="Logo" class="logo">
+            <h1>Gemio</h1>
+            <!--Close button(Visible in mobile but invisible on desktop)-->
+            <button class="sb-close-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+            <h4>General</h4>
+            <div class="General-button " onclick="showSection('overview')">
+            <i class="fa-solid fa-house icon"></i>
+                <a href="index.html">
+            <button class="Overview-text">
+                Overview
+            </button>
+                </a>
+            </div>
+            <div class="General-button" onclick="showSection('restaurants')">
+            <i class="fa-solid fa-utensils icon"></i>
+                <a href="restaurants.html">
+            <button class="Restaurant-text">
+                Restaurants
+            </button>
+                </a>
+            </div>
+             <div class="General-button" onclick="showSection('reservations')">
+             <i class="fa-solid fa-calendar-check icon"></i>
+             <a href="reservations.html">
+                 <button class="Reservation-text">
+                    Reservations
+                </button>
+                </a>
+            </div>
+            <div class="General-button" onclick="showSection('Users')">
+            <i class="fa-solid fa-users icon"></i>
+            <a href="users.html">
+            <button class="Customer-text">
+                Users
+            </button>
+            </a>
+            </div>
+             <div class="General-button" onclick="showSection('Reports')">
+            <i class="fa-solid fa-users icon"></i>
+               <a href="reports.html">
+                <button class="Report-text">
+                    Reports
+                </button>
+               </a>
+             </div>
+            <div class="General-button" onclick="showSection('help center')">
+            <i class="fa-solid fa-credit-card icon"></i>
+               <a href="help-center.html">
+            <button class="Payment-text">
+                Help Center
+            </button>
+               </a>
+            </div>
+            <div class="General-button" onclick="showSection('settings')">
+            <i class="fa-solid fa-gear icon"></i>
+               <a href="settings.html">
+            <button class="Settings-text">
+                Settings
+            </button>
+                </a>
+            </div>
+              <div class="Add-restaurant-option">  
+            <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+            <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+            <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+            </p>
+            <button class="Add-restaurant-button">
+                Add Restaurant
+            </button>
+              </div>
+              <div class="log-out-option" onclick="logout()">
+              <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+              </div>
+        </div>
+        <div class="General-main">
+    <div class="top-bar">
+        <!--Mobile hamburger(hidden on desktop but visible on mobile)-->
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <!--Admin Profile (Visible on desktop but hidden on mobile)-->
+        <div class="admin-profile desktop-only">
+    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
+     <div class="admin-text">
+    <p id="admin-name">Welcome back, Admin</p>
+    <p >
+        Manage restaurants, reservations, and platform activity.
+    </p>
+          </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <!--Search Bar(hidden on mobile but visible on desktop)-->
+        <div class="search-bar desktop-only">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" 
+           placeholder="Search restaurants, users, reservations..."
+           oninput="handleSearchInput(this.value)"
+           autocomplete="off">
+           <div class="search-dropdown" id="searchDropdown">
+            <!-- Search results will appear here -->
+           </div>
+        </div>
+        <!--Mobile logo(hidden on desktop but visible on mobile)-->
+        <span class="mobile-logo">Gemio</span>
+        <!--Mobile right icons(hidden on desktop but visible on mobile)-->
+        <div class="mobile-icons">
+            <div class="mobile-icon-wrap" onclick="window.location=`inbox.html`">
+                <i class="fa-regular fa-message message-icon"></i>
+                <span class="msg-badge" id="mobileMsgBadge">4</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleNotifications()">
+                <i class="fa-solid fa-bell notification-icon"></i>
+                <span class="notif-badge" id="mobileNotifBadge">3</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleMobileProfile()">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                     alt="profile Image"
+                     class="mobile-admin-photo"
+                     id="MobileAdminPhoto">
+            </div>
+        </div>
+        <!--Desktop Notifications but invisible on mobile-->
+        <div class="notif-wrapper desktop-only">
+       <i class="fa-solid fa-bell notification-icon" onclick="toggleNotifications()"></i>
+       <span class="notif-badge" id="notifBadge">3</span>
+            <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-header">
+                    <p class="notif-title">Notifications</p>
+                    <button class="mark-all-btn" onclick="markAllRead()">
+                        Mark All as Read
+                    </button>
+                </div>
+                <div class="notif-list" id="notifList">
+                <!---Notification will appear here -->
+                </div>
+                <div class="notif-footer" onclick="window.location=`notifications.html`">
+                 View all notifications
+                </div>
+            </div>
+        </div>
+        <!--Desktop Messages but invisible on mobile-->
+        <div class="msg-wrapper desktop-only">
+        <i class="fa-regular fa-message message-icon" onclick="toggleMessages()"></i>
+        <span class="msg-badge" id="msgBadge">4</span>
+            <div class="msg-dropdown" id="msgDropdown">
+                <div class="msg-dropdown-header">
+                    <p class="msg-drop-title">Messages</p>
+                    <button class="msg-mark-btn" onclick="markAllMessagesRead()">
+                     Mark all read
+                    </button>
+                </div>
+                <div class="msg-drop-list" id="msgDropList">
+                <!-- Messages texted will appear here -->
+                </div>
+                <div class="msg-drop-footer" onclick="window.location=`inbox.html`">
+                 Open full inbox
+                </div>
+            </div>
+        </div>
+        <!--Mobile Profile Dropdown but invisible on desktop-->
+        <div class="mobile-profile-dropdown" id="mobileProfileDropdown">
+            <div class="mob-profile-info">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                     alt="profile Image"
+                     class="mob-profile-photo"
+                     id="mobProfilePhoto">
+                <span id="mobProfileName">Admin</span>
+            </div>
+               <a href="settings.html">Settings</a>
+               <a href="#" onclick="handleLogout()">Logout</a>
+        </div>
+    </div>
+    <!--USERS CONTENT-->
+    <div class="users-content">
+        <!--Page Header-->
+        <div class="section-header">
+            <div class="header-left">
+                <a href="Dashboard.html">
+                    <i class="fa-solid fa-arrow-left back-arrow"></i>
+                </a>
+                <h2>All Users</h2>
+            </div>
+            <div class="section-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search users..."
+                     oninput="searchUsers(this.value)">
+            </div>
+        </div>
+        <!--Stat Cards-->
+        <div class="rest-stats">
+            <div class="rest-stat-card">
+                <i class="fa-solid fa-users" style="color:#3b82f6;"></i>
+                <div>
+                    <p class="stat-number">1,245</p>
+                    <p class="stat-label">Total Users</p>
+                </div>
+            </div>
+            <div class="rest-stat-card">
+                <i class="fa-solid fa-user-check" style="color:#22c55e;"></i>
+                <div>
+                    <p class="stat-number">43</p>
+                    <p class="stat-label">Active Users</p>
+                </div>
+            </div>
+            <div class="rest-stat-card">
+                <i class="fa-solid fa-user-xmark" style="color:#e11d48;"></i>
+                <div>
+                    <p class="stat-number">12</p>
+                    <p class="stat-label">Inactive Users</p>
+                </div>
+            </div>
+        </div>
+        <!--Filter-->
+        <div class="section-toolbar">
+            <select class="section-filter" id="statusFilter" onchange="filterUsers(this.value)">
+                <option value="all">All Status</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+            </select>
+        </div>
+        <!--Users Table-->
+        <div class="section-table-wrap">
+            <table class="section-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th><i class="fa-solid fa-user"></i> Name</th>
+                        <th><i class="fa-solid fa-envelope"></i> Email</th>
+                        <th><i class="fa-solid fa-calendar"></i> Date of Sign Up</th>
+                        <th><i class="fa-solid fa-clock"></i> Last Login</th>
+                        <th><i class="fa-solid fa-circle-check"></i> Status</th>
+                    </tr>
+                </thead>
+                <tbody id="userList">
+                    <tr data-status="active">
+                        <td>1</td>
+                        <td>Brian Otieno</td>
+                        <td>brian@gmail.com</td>
+                        <td>Jan 15, 2026</td>
+                        <td>Mar 28, 2026</td>
+                        <td><span class="status confirmed">● Active</span></td>
+                    </tr>
+                    <tr data-status="active">
+                        <td>2</td>
+                        <td>Wendy Mwangi</td>
+                        <td>wendymwangi@gmail.com</td>
+                        <td>Feb 15, 2026</td>
+                        <td>Mar 28, 2026</td>
+                        <td><span class="status confirmed">● Active</span></td>
+                    </tr>
+                    <tr data-status="active">
+                        <td>3</td>
+                        <td>Samson Mworia</td>
+                        <td>Samsonmworia@gmail.com</td>
+                        <td>Feb 17, 2026</td>
+                        <td>Mar 23, 2026</td>
+                        <td><span class="status confirmed">● Active</span></td>
+                    </tr>
+                    <tr data-status="inactive">
+                        <td>4</td>
+                        <td>Nicholas Wanyoike</td>
+                        <td>nben6755@gmail.com</td>
+                        <td>Jan 17,2026</td>
+                        <td>Mar 30, 2026</td>
+                        <td><span class="status pending">● Inactive</span></td>
+                    </tr>
+                    <tr data-status="inactive">
+                        <td>5</td>
+                        <td>Ali Masoud</td>
+                        <td>Alimasoud@gmail.com</td>
+                        <td>Jan 17, 2026</td>
+                        <td>Mar 31, 2026</td>
+                        <td><span class="status pending">● Inactive</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        </div>
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <script src="users.js"></script>
+     <script src="common.js"></script>
+</body>
+</html>

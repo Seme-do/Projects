@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Admin Dashboard</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </head>
+    <body> 
+        <div class="left-sidebar" id="leftSidebar">
+            <div class="Gemio-title">
+            <img src="thumbnails/download (1).svg" alt="Logo" class="logo">
+            <h1>Gemio</h1>
+            <!--Close button(Visible in mobile but invisble on desktop)-->
+            <button class="sb-close-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+            <h4>General</h4>
+            <div class="General-button " onclick="showSection('overview')">
+            <i class="fa-solid fa-house icon"></i>
+               <a href="Dashboard.html">
+            <button class="Overview-text">
+                Overview
+            </button>
+                </a>
+            </div>
+            <div class="General-button" onclick="showSection('restaurants')">
+            <i class="fa-solid fa-utensils icon"></i>
+                  <a href="restaurants.html">
+            <button class="Restaurant-text">
+                Restaurants
+            </button>
+                  </a>
+            </div>
+             <div class="General-button" onclick="showSection('reservations')">
+             <i class="fa-solid fa-calendar-check icon"></i>
+                 <button class="Reservation-text">
+                    Reservations
+                </button>
+            </div>
+            <div class="General-button" onclick="showSection('Customers')">
+            <i class="fa-solid fa-users icon"></i>
+            <a href="users.html">
+            <button class="Customer-text">
+                Users
+            </button>
+            </a>
+            </div>
+             <div class="General-button" onclick="showSection('Reports')">
+            <i class="fa-solid fa-users icon"></i>
+            <a href="reports.html">
+                <button class="Report-text">
+                    Reports
+                </button>
+            </a>
+             </div>
+            <div class="General-button" onclick="showSection('help center')">
+            <i class="fa-solid fa-credit-card icon"></i>
+                 <a href="help-center.html">
+            <button class="Payment-text">
+                Help Center
+            </button>
+                 </a>
+            </div>
+            <div class="General-button" onclick="showSection('settings')">
+            <i class="fa-solid fa-gear icon"></i>
+            <button class="Settings-text">
+                Settings
+            </button>
+            </div>
+              <div class="Add-restaurant-option">  
+            <img src="thumbnails/imagens de logotipo de comida vegetariana.jpg"
+                alt="Logout" class="Add-restaurant-icon">
+            <p class="Grow-add-restaurant">
+                 Grow Your Restaurant Network
+                </p>
+            <p class="Description-add-restaurant">
+                Add more restaurants to Gemio and increase reservations.
+            </p>
+            <button class="Add-restaurant-button">
+                Add Restaurant
+            </button>
+              </div>
+              <div class="log-out-option" onclick="logout()">
+              <i class="fa-solid fa-arrow-right-from-bracket icons"></i>
+                <p>Log Out</p>
+              </div>
+        </div>
+        <div class="General-main">
+    <div class="top-bar">
+        <!--Mobile hamburger(hidden on desktop but visible on mobile)-->
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <!--Admin Profile(Hidden on mobile btw visible on desktop)-->
+        <div class="admin-profile desktop-only">
+    <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+         alt="profile Image"
+         class="admin-photo"
+         id="admin-photo">
+     <div class="admin-text">
+    <p id="admin-name">Welcome back, Admin</p>
+    <p >
+        Manage restaurants, reservations, and platform activity.
+    </p>
+          </div>
+          <input type="file" id="photo-upload" accept="image/*" style="display: none;">
+        </div>
+        <!--Search bar(hidden on mobile but visible on desktop)-->
+        <div class="search-bar desktop-only">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" 
+                   placeholder="Search restaurants, users, reservations..."
+                   oninput="handleSearch(this.value)"
+                   autocomplete="off">
+            <div class="search-dropdown" id="searchDropdown">
+                <!--Search results will appear here-->
+            </div>
+        </div>
+        <!--Mobile logo(hidden on desktop but visible on mobile)-->
+        <span class="mobile-logo">Gemio</span>
+        <!--Mobile right icons(hidden on desktop btw visible on mobile)-->
+        <div class="mobile-icons">
+            <div class="mobile-icon-wrap" onclick="window.location=`inbox.html`">
+                <i class="fa-regular fa-message message-icon"></i>
+                <span class="msg-badge" id="mobMsgBadge">4</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleNotifications()">
+                <i class="fa-solid fa-bell notification-icon"></i>
+                <span class="notif-badge" id="mobNotifBadge">3</span>
+            </div>
+            <div class="mobile-icon-wrap" onclick="toggleMobileProfile()">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                        alt="profile Image"
+                        class="mobile-admin-photo"
+                        id="mobileAdminPhoto">
+            </div>
+        </div>
+        <!--Desktop Notifications but invisible on mobile-->
+        <div class="notif-wrapper desktop-only">
+       <i class="fa-solid fa-bell notification-icon" onclick="toggleNotifications()"></i>
+       <span class="notif-badge" id="notifBadge">3</span>
+            <div class="notif-dropdown" id="notifDropdown">
+                <div class="notif-header">
+                    <p class="notif-title">Notifications</p>
+                    <button class="mark-all-btn" onclick="markAllRead()">
+                        Mark All as Read
+                    </button>
+                </div>
+                <div class="notif-list" id="notifList">
+                <!---Notification will appear here -->
+                </div>
+                <div class="notif-footer" onclick="window.location=`notifications.html`">
+                 View all notifications
+                </div>
+            </div>
+        </div>
+        <!--Desktop Messages but invisible on mobile-->
+        <div class="msg-wrapper desktop-only">
+       <i class="fa-regular fa-message message-icon" onclick="toggleMessages()"></i>
+       <span class="msg-badge" id="msgBadge">4</span>
+            <div class="msg-dropdown" id="msgDropdown">
+                <div class="msg-dropdown-header">
+                    <p class="msg-drop-title">Messages</p>
+                    <button class="msg-mark-btn" onclick="markAllMessagesRead()">
+                     Mark all read
+                    </button>
+                </div>
+                <div class="msg-drop-list" id="msgDropList">
+                <!-- Messages texted will appear here -->
+                </div>
+                <div class="msg-drop-footer" onclick="window.location=`inbox.html`">
+                 Open full inbox
+                </div>
+            </div>
+        </div>
+        <!--Mobile profile dropdown but invisible on desktop-->
+        <div class="mobile-profile-dropdown" id="mobileProfileDropdown">
+            <div class="mob-profile-info">
+                <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                     alt="Profile Image"
+                     class="mob-profile-photo"
+                     id="mobProfilePhoto">
+                <span id="mobProfileName">Admin</span>
+            </div>
+               <a href="settings.html">Settings</a>
+               <a href="#" onclick="handleLogout()">Logout</a>
+        </div>
+    </div>
+        <!--SETTINGS CONTENT-->
+        <div class="settings-container">
+            <!--MAIN LIST-->
+            <div id="settingsMain" class="settings-screen active">
+                <div class="settings-profile-banner">
+                    <div class="settings-avatar">A</div>
+                    <div>
+                        <p class="settings-admin-name">Admin</p>
+                        <span class="settings-admin-email">admin@gmail.com · Administrator</span>
+                    </div>
+                </div>
+                <div class="settings-group-label">Account</div>
+                <div class="settings-list-group">
+                    <div class="settings-list-item" onclick="showScreen(`screenProfile`)">
+                        <div class="sli-icon" style="background: #fff3e0">
+                            <i class="fa-solid fa-user" style="color: #e07b3a"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>Profile Info</p>
+                            <span>Name, email, phone</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                    <div class="settings-list-item" onclick="showScreen(`screenSecurity`)">
+                        <div class="sli-icon" style="background: #fce4ec">
+                            <i class="fa-solid fa-lock" style="color: #e11d48"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>Password & Security</p>
+                            <span>Change password, 2FA</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                    <div class="settings-list-item" onclick="showScreen(`screenSessions`)">
+                        <div class="sli-icon" style="background: #e8f5e9">
+                            <i class="fa-solid fa-desktop" style="color: #22c55e"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>Sessions</p>
+                            <span>Active devices</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                </div>
+                <div class="settings-group-label">Platform</div>
+                <div class="settings-list-group">
+                    <div class="settings-list-item" onclick="showScreen(`screenGeneral`)">
+                        <div class="sli-icon" style="background: #e3f2fd">
+                            <i class="fa-solid fa-globe" style="color: #3b82f6"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>General</p>
+                            <span>Name, logo, email</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                    <div class="settings-list-item" onclick="showScreen(`screenRegional`)">
+                        <div class="sli-icon" style="background: #f3e5f5">
+                            <i class="fa-solid fa-globe" style="color: #3b82f6"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>Regional</p>
+                            <span>Currency, timezone</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                    <div class="settings-list-item" onclick="showScreen(`screenCategories`)">
+                        <div class="sli-icon" style="background: #e8f5e9">
+                            <i class="fa-solid fa-list" style="color: #22c55e"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>Categories</p>
+                            <span>Manage dining types</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                    <div class="settings-list-item" onclick="showScreen(`screenSystem`)">
+                        <div class="sli-icon" style="background: #fff8e1">
+                            <i class="fa-solid fa-gear" style="color: #f59e0b"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>System</p>
+                            <span>Maintenance mode</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                </div>
+                <div class="settings-group-label">Preferences</div>
+                <div class="settings-list-group">
+                    <div class="settings-list-item" onclick="showScreen(`screenNotifications`)">
+                        <div class="sli-icon" style="background: #fff8e1">
+                            <i class="fa-solid fa-bell" style="color: #f59e0b"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>Notifications</p>
+                            <span>Coming soon</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                    <div class="settings-list-item" onclick="showScreen(`screenAppearance`)">
+                        <div class="sli-icon" style="background: #fce4ec">
+                            <i class="fa-solid fa-palette" style="color: #e11d48"></i>
+                        </div>
+                        <div class="sli-text">
+                            <p>Appearance</p>
+                            <span>Coming soon</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                    </div>
+                </div>
+                <div class="settings-group-label">Danger</div>
+                <div class="settings-list-group">
+                <div class="settings-list-item" onclick="showScreen(`screenDanger`)">
+                    <div class="sli-icon" style="background: #fee2e2">
+                        <i class="fa-solid fa-triangle-exclamation" style="color: #e11d48"></i>
+                    </div>
+                    <div class="sli-text">
+                        <p>Danger Zone</p>
+                        <span>Delete account</span>
+                    </div>
+                    <span class="sli-badge">Irreversible</span>
+                    <i class="fa-solid fa-chevron-right sli-arrow"></i>
+                </div>
+                </div>
+            </div>
+            <!--SettingsMain closes here - all the sub-screen below are siblings-->
+                <!--PROFILE INFO-->
+                <div id="screenProfile" class="settings-screen">
+                    <div class="screen-header">
+                        <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                            <i class="fa-solid fa-arrow-left"></i> Settings
+                        </button>
+                        <h2>Profile Info</h2>
+                    </div>
+                    <div class="screen-body">
+                        <div class="profile-photo-wrap" style="text-align: center;margin-bottom: 20px">
+                            <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
+                                 alt="profile"
+                                 class="settings-photo"
+                                 id="settingsPhoto">
+                            <div class="photo-overlay" onclick="document.getElementById(`settingsPhotoUpload`).click()">
+                                <i class="fa-solid fa-camera"></i>
+                            </div>
+                            <input type="file" id="settingsPhotoUpload" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="screen-fields">
+                            <div class="field-group">
+                                <label>Full Name</label>
+                                <input type="text" id="adminFullName" value="Admin" disabled>
+                            </div>
+                            <div class="field-group">
+                                <label>Email</label>
+                                <input type="email" id="adminEmail" value="admin@gmail.com" disabled>
+                            </div>
+                            <div class="field-group">
+                                <label>Phone Number</label>
+                                <input type="tel" id="adminPhone" value="+254 700 000 000" disabled>
+                            </div>
+                            <div class="field-group">
+                                <label>Role</label>
+                                <input type="text" value="Adminstrator" disabled>
+                            </div>
+                        </div>
+                        <div class="screen-actions">
+                            <button class="editBtn" onclick="toggleEdit()">
+                                <i class="fa-solid fa-pen"></i> Edit
+                            </button>
+                            <button class="save-btn" id="saveBtn" style="display: none" onclick="saveProfile()">
+                                <i class="fa-solid fa-check"></i> Save Changes
+                            </button>
+                            <button class="cancel-btn" id="cancelBtn" style="display: none" onclick="cancelEdit()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--PASSWORD & SECURITY-->
+                <div id="screenSecurity" class="settings-screen">
+                    <div class="screen-header">
+                        <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                            <i class="fa-solid fa-arrow-left"></i> Settings
+                        </button>
+                        <h2>Password & Security</h2>
+                    </div>
+                    <div class="screen-body">
+                        <div class="screen-fields">
+                            <div class="field-group">
+                                <label>Current Password</label>
+                                <input type="password" placeholder="Enter current password">
+                            </div>
+                            <div class="field-group">
+                                <label>New Password</label>
+                                <input type="password" placeholder="Enter new password">
+                            </div>
+                            <div class="field-group">
+                                <label>Confirm Password</label>
+                                <input type="password" placeholder="Confirm new password">
+                            </div>
+                        </div>
+                            <div class="toggle-row">
+                                <div>
+                                    <p class="toggle-title">
+                                        Two Factor Authenciation
+                                    </p>
+                                    <p class="toggle-desc">
+                                        Add an extra layer of security
+                                    </p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="twofaToggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <button class="save-btn" style="margin-top: 16px;width: 100%">
+                                <i class="fa-solid fa-lock"></i> Update Password
+                            </button>
+                            <div class="screen-section-label">Login Activity</div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fa-solid fa-desktop"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <p class="activity-device">Windows PC - Chrome</p>
+                                    <p class="activity-time">Today at 10:30 AM · Nairobi, Kenya</p>
+                                </div>
+                                <span class="status confirmed">● Current</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--SESSIONS-->
+                    <div id="screenSessions" class="settings-screen">
+                        <div class="screen-header">
+                            <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                                <i class="fa-solid fa-arrow-left"></i> Settings
+                            </button>
+                            <h2>Sessions</h2>
+                        </div>
+                        <div class="screen-body">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fa-solid fa-desktop"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <p class="activity-device">Windows PC - Chrome</p>
+                                    <p class="activity-time">Today at 10:30 AM · Nairobi, Kenya</p>
+                                </div>
+                                <span class="status confirmed">● Current</span>
+                            </div>
+                            <div class="sessions-btns" style="margin-top: 16px">
+                                <button class="logout-btn">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout Current Device
+                                </button>
+                                <button class="logout-all-btn">
+                                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout All Devices
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--GENERAL-->
+                    <div id="screenGeneral" class="settings-screen">
+                        <div class="screen-header">
+                            <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                                <i class="fa-solid fa-arrow-left"></i> Settings
+                            </button>
+                            <h2>General</h2>
+                        </div>
+                        <div class="screen-body">
+                            <div class="screen-fields">
+                                <div class="field-group">
+                                    <label>Gemio Email</label>
+                                    <input type="email" value="bussiness@gemio.app">
+                                </div>
+                            </div>
+                            <button class="save-btn" style="width: 100%;margin-top: 8px">
+                                <i class="fa--solid fa-check"></i> Save Changes
+                            </button>
+                            <div class="screen-section-label">
+                                Registration
+                            </div>
+                            <div class="toggle-row">
+                                <div>
+                                    <p class="toggle-title">Allow Signups</p>
+                                    <p class="toggle-desc">Allow new users to register</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="toggle-row">
+                                <div>
+                                    <p class="toggle-title">Auto Approve Restaurants</p>
+                                    <p class="toggle-desc">Automatically approve new restaurants</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--REGIONAL-->
+                    <div id="screenRegional" class="settings-screen">
+                        <div class="screen-header">
+                            <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                                <i class="fa-solid fa-arrow-left"></i> Settings
+                            </button>
+                            <h2>Regional</h2>
+                        </div>
+                        <div class="screen-body">
+                            <div class="screen-fields">
+                                <div class="field-group">
+                                    <label>Currency</label>
+                                    <select class="settings-select">
+                                        <option value="KES" selected>KES - Kenyan Shillings</option>
+                                        <option value="USD">USD - US Dollar</option>
+                                        <option value="EUR">EUR - Euro</option>
+                                        <option value="GBP">GBP - British Pound</option>
+                                    </select>
+                                </div>
+                                <div class="field-group">
+                                    <label>Time Zone</label>
+                                    <select class="settings-select">
+                                        <option value="Africa/Nairobi" selected>Africa/Nairobi</option>
+                                        <option value="UTC">UTC (GMT+0)</option>
+                                        <option value="Europe/London">Europe/London (GMT+1)</option>
+                                        <option value="America/New_York">America/New_York (GMT-5)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="save-btn" style="width: 100%;margin-top: 8px">
+                                <i class="fa-solid fa-check"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+                    <!--CATEGORIES-->
+                    <div id="screenCategories" class="settings-screen">
+                        <div class="screen-header">
+                            <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                                <i class="fa-solid fa-arrow-left"></i> Settings
+                            </button>
+                            <h2>Categories</h2>
+                        </div>
+                        <div class="screen-body">
+                            <div class="categories-list" id="categoriesList">
+                                <div class="category-item">
+                                    <span>Fine Dining</span>
+                                    <i class="fa-solid fa-trash delete-category"></i>
+                                </div>
+                                <div class="category-item">
+                                    <span>Casual Dining</span>
+                                    <i class="fa-solid fa-trash delete-category"></i>
+                                </div>
+                                <div class="category-item">
+                                    <span>Cafes</span>
+                                    <i class="fa-solid fa-trash delete-category"></i>
+                                </div>
+                                <div class="category-item">
+                                    <span>Fast Food</span>
+                                    <i class="fa-solid fa-trash delete-category"></i>
+                                </div>
+                                <div class="category-item">
+                                    <span>Buffet</span>
+                                    <i class="fa-solid fa-trash delete-category"></i>
+                                </div>
+                            </div>
+                            <div class="add-category">
+                                <input type="text" id="newCategory" placeholder="New category name...">
+                                <button class="edit-btn" onclick="addCategory()">
+                                    <i class="fa-solid fa-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--SYSTEM-->
+                    <div id="screenSystem" class="settings-screen">
+                        <div class="screen-header">
+                            <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                                <i class="fa-solid fa-arrow-left"></i> Settings
+                            </button>
+                            <h2>System</h2>
+                        </div>
+                        <div class="screen-body">
+                            <div class="toggle-row">
+                                <div>
+                                    <p class="toggle-title">Maintenance Mode</p>
+                                    <p class="toggle-desc">Temporarily disable the platform</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="maintenanceToggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
+                            <div class="maintenance-warning" id="maintenance-warning" style="display: none;">
+                                <i class="fa-solid fa-triangle-exclamation"></i> 
+                                Platform is currently in maintenance mode! 
+                            </div>
+                        </div>
+                    </div>
+                    <!--NOTIFICATIONS-->
+                    <div id="screenNotifications" class="settings-screen">
+                        <div class="screen-header">
+                            <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                                <i class="fa-solid fa-arrow-left"></i> Settings
+                            </button>
+                            <h2>Notifications</h2>
+                        </div>
+                        <div class="screen-body">
+                            <!--DELIVERY CHANNELS-->
+                            <div class="screen-section-label">Delivery Channels</div>
+                            <div class="settings-list-group">
+                                <div class="notif-toggle-row">
+                                    <div class="notif-icon-wrap" style="background: #e3f2fd">
+                                        <i class="fa-solid fa-envelope" style="color: #3b82f6"></i>
+                                    </div>
+                                    <div class="notif-text">
+                                        <p>Email</p>
+                                        <span>Sent to admin@gmail.com</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-toggle-row">
+                                    <div class="notif-icon-wrap" style="background: #fff3e0">
+                                        <i class="fa-solid fa-bell" style="color: #e07b3a"></i>
+                                    </div>
+                                    <div class="notif-text">
+                                        <p>Push Notifications</p>
+                                        <span>Browser alerts</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--RESERVATION EVENTS-->
+                            <div class="screen-section-label">Reservation Events</div>
+                            <div class="settings-list-group">
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>New Booking</p>
+                                        <span>When a customer makes a reservation</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>Reminders</p>
+                                        <span>24hrs before reservation</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>Changes & Cancellations</p>
+                                        <span>When a reservation is modified or cancelled</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--RESTAURANT ACTIVITY-->
+                            <div class="screen-section-label">Restaurant Activity</div>
+                            <div class="settings-list-group">
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>Menu Updates</p>
+                                        <span>When a restaurant updates their menu</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>Restaurant Verification Pending</p>
+                                        <span>New restaurant awaiting admin approval</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>Complaints & Flags</p>
+                                        <span>When a restaurant is flagged or reported</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--ADMIN & OPERATIONS-->
+                            <div class="screen-section-label">Admin & Operations</div>
+                            <div class="settings-list-group">
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>New User Signup</p>
+                                        <span>When a new user registers on the platform</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>Platform Health Alerts</p>
+                                        <span>Downtime, API errors, performance issues</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--SYSTEM-->
+                            <div class="screen-section-label">System</div>
+                            <div class="settings-list-group">
+                                <div classs="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>System Updates</p>
+                                        <span>Platform changes and new features</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                                <div class="notif-toggle-row">
+                                    <div class="notif-text">
+                                        <p>Security Alerts</p>
+                                        <span>Login attempts, password changes, new devices</span>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <!--SAVE BUTTON-->
+                            <button class="save-btn" style="width: 100%;margin-top: 16px">
+                                <i class="fa-solid fa-check"></i>
+                                Save Preferences
+                            </button>
+                        </div>
+                    </div>
+                    <!--APPEARANCE-->
+                    <div id="screenAppearance" class="settings-screen">
+                        <div class="screen-header">
+                            <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                                <i class="fa-solid fa-arrow-left"></i> Settings
+                            </button>
+                            <h2>Appearance</h2>
+                        </div>
+                        <div class="screen-body">
+                            <p style="color: #9ca3af;font-size: 14px;text-align: center;margin-top: 40px;">
+                                Coming soon
+                            </p>
+                        </div>
+                    </div>
+                    <!--DANGER ZONE-->
+                    <div id="screenDanger" class="settings-screen">
+                        <div class="screen-header">
+                            <button class="screen-back" onclick="showScreen(`settingsMain`)">
+                                <i class="fa-solid fa-arrow-left"></i> Settings
+                            </button>
+                            <h2>Danger Zone</h2>
+                        </div>
+                        <div class="screen-body">
+                            <div class="danger-card">
+                                <h3 class="danger-title">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                    Delete Account
+                                </h3>
+                                <p class="danger-desc">
+                                    Once you delete your account all data will be permanently lost. This action cannot be undone.
+                                </p>
+                                <button class="delete-btn">
+                                    <i class="fa-solid fa-trash"></i> Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <script src="settings.js"></script>
+    <script src="common.js"></script>
+    </body>
+</html>
