@@ -1043,7 +1043,6 @@ body{
   color: #6b7280;
   margin-top: 2px;
 }
-/*
 .toggle-switch input {
   opacity: 0;
   width: 0;
@@ -1074,7 +1073,6 @@ body{
 .toggle-switch input:checked + .toggle-slider:before {
   transform: translateX(20px);
 }
-*/
 /*LOGIN ACTIVITY*/
 .activity-item {
   display: flex;
@@ -2756,6 +2754,48 @@ body.login-body .auth-page {
   margin-top: 16px;
   flex-wrap: wrap;
 }
+.notif-toggle-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px;
+  padding: 12px 14px;
+  border-top: 0.5px solid #f3f4f6;
+}
+.notif-toggle-row:first-child {
+  border-top: none;
+}
+.notif-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.notif-text {
+  flex: 1;
+}
+.notif-text p {
+  font-size: 13px;
+  font-weight: 500;
+  color: #3b3020;
+  margin: 0;
+}
+.notif-text span {
+  font-size: 11px;
+  color: #9ca3af;
+  display: block;
+}
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
 /* ─── Responsive Breakpoint ─────────────────────────────── */
 @media (max-width: 768px) {
   .desktop-only { display: none !important; }
