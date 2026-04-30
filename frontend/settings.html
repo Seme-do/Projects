@@ -759,10 +759,117 @@
                             <h2>Appearance</h2>
                         </div>
                         <div class="screen-body">
-                            <p style="color: #9ca3af;font-size: 14px;text-align: center;margin-top: 40px;">
-                                Coming soon
-                            </p>
+                            <!--THEME-->
+                            <div class="screen-section-label">Theme</div>
+                            <div class="settings-list-group">
+                                <div class="theme-options">
+                                    <div class="theme-card active-theme" onclick="setTheme(`light`, this)">
+                                        <div class="theme-preview-box" style="background: #FDF8E6;border: 0.5px solid #e5e7eb"></div>
+                                        <p class="theme-label">Light</p>
+                                        <span class="theme-sub">Default</span>
+                                    </div>
+                                    <div class="theme-card" onclick="setTheme(`dark`, this)">
+                                        <div class="theme-preview-box" style="background:#1e1e2e"></div>
+                                        <p class="theme-label">Dark</p>
+                                        <span class="theme-sub">Easy on eyes</span>
+                                    </div>
+                                    <div class="theme-card" onclick="setTheme(`system`, this)">
+                                        <div class="theme-preview-box" style="background:linear-gradient(to right,#FDF8E6 50%,#1e1e2e 50%)"></div>
+                                        <p class="theme-label">System</p>
+                                        <span class="theme-sub">Auto</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--LIVE PREVIEW-->
+                            <div class="screen-section-label">Preview</div>
+                            <div class="settings-list-group" style="padding:12px">
+                                <p style="font-size:11px;color: #9ca3af;margin-bottom: 8px">Dashboard preview</p>
+                                <div class="mini-dashboard light-theme" id="miniDash">
+                                    <div class="mini-dash-nav">
+                                        <span class="mini-dash-logo">Gemio</span>
+                                    </div>
+                                    <div class="mini-dash-body">
+                                        <div class="mini-sidebar">
+                                            <div class="mini-sb-item active-item">Overview</div>
+                                            <div class="mini-sb-item">Restaur.</div>
+                                            <div class="mini-sb-item">Reserv.</div>
+                                            <div class="mini-sb-item">Users</div>
+                                        </div>
+                                        <div class="mini-content">
+                                            <div class="mini-card">
+                                                <div class="mini-card-num">132</div>
+                                                <div class="mini-card-lbl">Restaurants</div>
+                                            </div>
+                                            <div class="mini-card">
+                                                <div class="mini-card-num">16</div>
+                                                <div class="mini-card-lbl">Today</div>
+                                            </div>
+                                            <div class="mini-card">
+                                                <div class="mini-card-num">43</div>
+                                                <div class="mini-card-lbl">Users</div>
+                                            </div>
+                                            <div class="mini-card">
+                                                <div class="mini-card-num">7</div>
+                                                <div class="mini-card-lbl">Pending</div>
+                                            </div>
+                                        </div>
+                                        <div class="mini-chart">
+                                            <div class="mini-bar" style="height: 40%"></div>
+                                            <div class="mini-bar" style="height: 60%"></div>
+                                            <div class="mini-bar" style="height: 80%"></div>
+                                            <div class="mini-bar" style="height: 50%"></div>
+                                            <div class="mini-bar" style="height: 90%"></div>
+                                            <div class="mini-bar" style="height: 70%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!--LANGUAGES-->
+                        <div class="screen-section-label">Language</div>
+                        <div class="settings-list-group">
+                            <div class="appearance-row">
+                                <div class="appearance-text">
+                                    <p>Language</p>
+                                    <span>Interface language</span>
+                                </div>
+                                <select class="settings-select" style="font-size: 12px;padding: 4px 8px;">
+                                    <option value="english" selected>English</option>
+                                    <option value="swahili" disabled>Swahili (coming soon)</option>
+                                    <option value="french" disabled>French (coming soon)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--DATE & TIME-->
+                        <div class="screen-section-label">Date & Time</div>
+                        <div class="settings-list-group">
+                            <div class="appearance-row">
+                                <div class="appearance-text">
+                                    <p>Date Format</p>
+                                    <span>How dates are displayed</span>
+                                </div>
+                                <select class="settings-select" style="font-size: 12px;padding: 4px 8px">
+                                    <option value="DD/MM/YYYY" selected>DD/MM/YYYY</option>
+                                    <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                    <ption value="YYYY-MM-DD">YYYY-MM-DD</ption>
+                                </select>
+                            </div>
+                            <div class="appearance-row">
+                                <div class="appearance-text">
+                                    <p>Time Format</p>
+                                    <span>12hr or 24hr clock</span>
+                                </div>
+                                <select class="settings-select" style="font-size:12px;padding:4px 8px">
+                                    <option value="12hr" selected>12hr</option>
+                                    <option value="24hr">24hr</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--SAVE-->
+                        <button class="save-btn" style="width: 100%;margin-top: 16px">
+                            <i class="fa-solid fa-check"></i> 
+                            Save Preferences
+                        </button>
                     </div>
                     <!--DANGER ZONE-->
                     <div id="screenDanger" class="settings-screen">
