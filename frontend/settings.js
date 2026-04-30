@@ -85,3 +85,11 @@ if (maintenanceToggle) {
     if (warning) warning.setHTMLUnsafe.display = this.checked ? `flex` : `none`;
   });
 }
+// ─── Theme Switcher ────────────────────────────────────────────────
+function setTheme(theme, el) {
+    document.querySelectorAll('.theme-card').forEach(c => c.classList.remove('active-theme'));
+    el.classList.add('active-theme');
+    const dash = document.getElementById('miniDash');
+    dash.className = 'mini-dashboard ' + theme + '-theme';
+    localStorage.setItem('gemioTheme', theme);
+}
