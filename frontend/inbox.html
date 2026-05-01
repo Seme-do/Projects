@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     </head>
     <body> 
-        <div class="left-sidebar">
+        <div class="left-sidebar" id="leftSidebar">
             <div class="Gemio-title">
             <img src="thumbnails/download (1).svg" alt="Logo" class="logo">
             <h1>Gemio</h1>
@@ -180,7 +180,7 @@
             </div>
         </div>
         <!--Mobile Profile Dropdown but invisible on desktop-->
-        <div class="mobile-profile-dropdown" id="mobProfileDropdown">
+        <div class="mobile-profile-dropdown" id="mobileProfileDropdown">
             <div class="mob-profile-info">
                 <img src="thumbnails/RONALDO prime dönem foto (1).jpg"
                      alt="profile Image"
@@ -218,7 +218,7 @@
                     <p>Select a conversation to start messaging</p>
                 </div>
                 <!--Chat Window(Hidden until conversation is selected)-->
-                <div class="chat-window" id="chatWindow" style="display none">
+                <div class="chat-window" id="chatWindow" style="display: none">
                     <div class="chat-header" id="chatHeader">
                         <!--Injected by inbox.js-->
                     </div>
@@ -238,6 +238,7 @@
             </div>
         </div>
     </div>
+        </div>
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 <script src="inbox.js"></script>
 <script src="common.js"></script>
