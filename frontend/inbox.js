@@ -113,8 +113,15 @@ function openConversation(id) {
   document.getElementById("inboxEmpty").style.display  = "none";
   document.getElementById("chatWindow").style.display  = "flex";
 
-  // Render header
+  //On mobile - show right panel
+  if (window.innerWidth <= 768) {
+    document.getElementById("inboxRight").classList.add("mobile-open");
+  }
+  // Render header - back button added for mobile
   document.getElementById("chatHeader").innerHTML = `
+  <button class="chat-back-btn" onclick="closeChat()">
+     <i class="fa-solid fa-arrow-left"></i>
+  </button>
     <div class="chat-header-av ${getAvClass(conv.type)}">${conv.initials}</div>
     <div class="chat-header-info">
       <p class="chat-header-name">
@@ -204,3 +211,11 @@ window.addEventListener("load", () => {
     if (el) el.src = savedPhoto;
   }
 });
+
+//___Close chat on mobile___
+function closeChat() {
+  document.getElementById("inboxRight").classList.remove("mobile-open");
+  document.getElementById("chatWindow").style.display = "none";
+  document.getElementById("inboxEmpty").style.display = "flex";
+  activeId = null;
+}
