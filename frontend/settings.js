@@ -76,6 +76,8 @@ window.addEventListener(`load`, () => {
       }
     });
   }
+
+  //Load saved notification preferences
 })
 // Maintenance Mode toggle
 const maintenanceToggle = document.getElementById(`maintenanceToggle`);
@@ -92,4 +94,49 @@ function setTheme(theme, el) {
     const dash = document.getElementById('miniDash');
     dash.className = 'mini-dashboard ' + theme + '-theme';
     localStorage.setItem('gemioTheme', theme);
+}
+
+// ─── Save Notification Preferences ────────────────────────────────
+function saveNotificationPreferences() {
+  const toggles = document.querySelectorAll('#screenNotifications .toggle-switch input');
+  const preferences = {};
+
+  toggles.forEach((toggle, index) => {
+    preferences[`notif_${index}`] = toggle.checked;
+  });
+
+  localStorage.setItem('notificationPreferences', JSON.stringify(preferences));
+  showToast('Notification preferences saved!');
+}
+
+// ─── Load Notification Preferences ────────────────────────────────
+function loadNotificationPreferences() {
+  const saved = localStorage.getItem('notificationPreferences');
+  if (!saved) return;
+
+  const preferences = JSON.parse(saved);
+  const toggles = document.querySelectorAll('#screenNotifications .toggle-switch input');
+
+  toggles.forEach((toggle, index) => {
+    if (preferences[`notif_${index}`] !== undefined) {
+      toggle.checked = preferences[`notif_${index}`];
+    }
+  });
+}
+
+// ─── Toast Notification ────────────────────────────────────────────
+function showToast(message) {
+  const existing = document.getElementById('gemioToast');
+  if (existing) existing.remove();
+
+  const toast = document.createElement('div');
+  toast.id = 'gemioToast';
+  toast.innerHTML = `<i class="fa-solid fa-check"></i> ${message}`;
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.classList.add('show'), 10);
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
 }
