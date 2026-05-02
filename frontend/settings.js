@@ -72,12 +72,13 @@ window.addEventListener(`load`, () => {
           document.getElementById(`settings-photo`).src = event.target.result;
           localStorage.setItem(`adminPhoto`,event.target.result);
         };
-        reader.readAsDataURL(file);
+        render.readAsDataURL(file);
       }
     });
   }
 
   //Load saved notification preferences
+  loadNotificationPreferences();
 })
 // Maintenance Mode toggle
 const maintenanceToggle = document.getElementById(`maintenanceToggle`);

@@ -2948,6 +2948,33 @@ body.login-body .auth-page {
     font-size: 11px;
     color: #9ca3af;
 }
+/* ─── Toast ───────────────────────────────────────────────────────── */
+#gemioToast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #3b3020;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  white-space: nowrap;
+}
+#gemioToast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+#gemioToast i {
+  color: #22c55e;
+}
 /* ─── Responsive Breakpoint ─────────────────────────────── */
 @media (max-width: 768px) {
   .desktop-only { display: none !important; }
