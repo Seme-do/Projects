@@ -2975,6 +2975,45 @@ body.login-body .auth-page {
 #gemioToast i {
   color: #22c55e;
 }
+/*_____Danger Zone_____*/
+.danger-card {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    padding: 20px;
+}
+.danger-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #e11d48;
+    margin: 0 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.danger-desc {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0 0 16px;
+    line-height: 1.6;
+}
+.delete-btn {
+    background: #e11d48;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+.delete-btn:hover {
+    background: #be123c;
+}
 /* ─── Responsive Breakpoint ─────────────────────────────── */
 @media (max-width: 768px) {
   .desktop-only { display: none !important; }
