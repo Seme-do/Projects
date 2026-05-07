@@ -68,7 +68,7 @@ window.addEventListener(`load`, () => {
       const file = e.target.files[0];
       if (file) {
         const render = new FileReader();
-        reader.onload = (event) => {
+        render.onload = (event) => {
           document.getElementById(`settings-photo`).src = event.target.result;
           localStorage.setItem(`adminPhoto`,event.target.result);
         };
@@ -77,9 +77,27 @@ window.addEventListener(`load`, () => {
     });
   }
 
+  //Cancel button for delete account modal
+    const cancelBtn = document.getElementById('modalCancelBtn');
+if (cancelBtn) {
+    cancelBtn.addEventListener('click', function() {
+        closeDeleteModal();
+    });
+}
+
   //Load saved notification preferences
   loadNotificationPreferences();
-})
+
+  // Enable confirm button only when user types DELETE
+  const deleteInput = document.getElementById('deleteConfirmInput');
+  if (deleteInput) {
+    deleteInput.addEventListener('input', function() {
+      const btn = document.getElementById('modalConfirmBtn');
+      btn.disabled = this.value !== 'DELETE';
+    });
+  }
+});
+
 // Maintenance Mode toggle
 const maintenanceToggle = document.getElementById(`maintenanceToggle`);
 if (maintenanceToggle) {
@@ -141,3 +159,4 @@ function showToast(message) {
     setTimeout(() => toast.remove(), 300);
   }, 3000);
 }
+

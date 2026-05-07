@@ -890,39 +890,12 @@
                                 <p class="danger-desc">
                                     Once you delete your account all data will be permanently lost. This action cannot be undone.
                                 </p>
-                                <button class="delete-btn">
+                                <button class="delete-btn" onclick="openDeleteModal()">
                                     <i class="fa-solid fa-trash"></i> Delete Account
                                 </button>
                             </div>
                         </div>
                     </div>
-        </div>
-        <!--Delete Account Confirmation Modal-->
-        <div class="modal-overlay" id="deleteModal">
-            <div class="modal-card">
-                <div class="modal-icon">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                </div>
-                <h3 class="modal-title">Delete Account</h3>
-                <p class="modal-desc">
-                    Are you absolutely sure? This will permanently delete your admin account and all associated data. 
-                    This action <strong>cannot be undone. </strong>
-                </p>
-                <div class="modal-input-group">
-                    <label>Type <strong>DELETE</strong> to confirm</label>
-                    <input type="text" 
-                           id="deleteConfirmInput" 
-                           placeholder="Type DELETE here...">
-                </div>
-                <div class="modal-actions">
-                    <button class="modal-cancel-btn" onclick="closeDeleteModal()">
-                        Camcel
-                    </button>
-                    <button class="modal-confirm-btn" id="modalConfirmBtn" onclick="confirmDelete()" disabled>
-                        <i class="fa-solid fa-trash"></i> Delete Account 
-                    </button>
-                </div>
-            </div>
         </div>
         <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
     <script src="settings.js"></script>
