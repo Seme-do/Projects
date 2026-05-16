@@ -3023,13 +3023,30 @@ body.login-body .auth-page {
   .desktop-only { display: none !important; }
   .hamburger-btn { display: block; }
   .mobile-logo { display: block; }
-  .mobile-icons { display: flex; }
+  .mobile-icons { 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .mobile-icon-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
 
   .top-bar {
     padding: 12px 16px;
     height: auto;
     margin-left: 0;
     position: relative;
+    overflow: hidden;
+  }
+  .mobile-admin-photo {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
   }
 }
 /*Mobile option for Recent Reservations
